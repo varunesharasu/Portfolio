@@ -8,7 +8,7 @@ export default function Education() {
       degree: "Bachelor of Technology in Information Technology",
       institution: "Kongu Engineering College",
       year: "2022 - 2026",
-      description: "Specialized in Web Technologies and Distributed Systems. Thesis on React Performance Optimization.",
+      description: "A four-year undergraduate program focused on engineering and technology.",
       icon: "🎓",
       color: "from-blue-500 to-cyan-500",
     },
@@ -16,7 +16,7 @@ export default function Education() {
       degree: "Higher Secondary Certificate (HSC)",
       institution: "The Optimus Public School",
       year: "2021 - 2022",
-      description: "Graduated with honors. Coursework included Algorithms, Database Systems, and Web Development.",
+      description: "Hard-working and organized communicator seeking an administrative role where I can apply skills developed through two years of corporate communications coursework to support office efficiency and improve workflow.",
       icon: "📚",
       color: "from-green-500 to-emerald-500",
     },
@@ -24,7 +24,7 @@ export default function Education() {
       degree: "Secondary School Leaving Certificate (SSLC)",
       institution: "The Optimus Public School",
       year: "2019 - 2020",
-      description: "Focus on Mathematics and Physics. Participated in programming competitions and science fairs.",
+      description: "focus on clarity and conciseness. Participated in programming competitions and science fairs.",
       icon: "🏫",
       color: "from-purple-500 to-pink-500",
     },
@@ -201,8 +201,8 @@ export default function Education() {
         >
           {[
             { number: "4+", label: "Years of Study", icon: "📖" },
-            { number: "95%", label: "Average Grade", icon: "⭐" },
-            { number: "10+", label: "Projects Completed", icon: "🚀" },
+            { number: "85%", label: "Average Grade", icon: "⭐" },
+            { number: "6+", label: "Projects Completed", icon: "🚀" },
             { number: "5+", label: "Certifications", icon: "🏆" },
           ].map((stat, index) => (
             <motion.div
