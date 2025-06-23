@@ -21,7 +21,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-500 text-sm">Email</h4>
-                  <p className="text-gray-800">contact@example.com</p>
+                  <p className="text-gray-800">tvarunesharasu@gmail.com</p>
                 </div>
               </div>
               
@@ -33,7 +33,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-500 text-sm">Phone</h4>
-                  <p className="text-gray-800">+1 (123) 456-7890</p>
+                  <p className="text-gray-800">+91 93607 93223</p>
                 </div>
               </div>
               
@@ -46,7 +46,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-500 text-sm">Location</h4>
-                  <p className="text-gray-800">San Francisco, CA</p>
+                  <p className="text-gray-800">Erode, Tamil Nade</p>
                 </div>
               </div>
             </div>
@@ -77,6 +77,7 @@ export default function Contact() {
                 <input 
                   type="text" 
                   id="name" 
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your name"
                 />
@@ -87,6 +88,7 @@ export default function Contact() {
                 <input 
                   type="email" 
                   id="email" 
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your email"
                 />
@@ -107,6 +109,7 @@ export default function Contact() {
                 <textarea 
                   id="message" 
                   rows="5" 
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your message"
                 ></textarea>
