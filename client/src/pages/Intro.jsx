@@ -29,10 +29,12 @@ export default function Intro() {
         </div>
         <div className="md:w-1/2 flex justify-center">
           <div className="w-64 h-64 md:w-80 md:h-80 bg-blue-100 rounded-full overflow-hidden border-4 border-blue-200">
-            {/* Replace with your image */}
-            <div className="w-full h-full flex items-center justify-center text-gray-400">
-              <span className="text-4xl">Your Photo</span>
-            </div>
+            <img
+              src="/me.jpg"
+              alt="Varunesh T"
+              className="w-full h-full object-cover object-top"
+              style={{ objectPosition: 'center 20%' }}
+            />
           </div>
         </div>
       </div>
