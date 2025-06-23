@@ -1,61 +1,74 @@
 export default function Skills() {
   const skills = [
     {
-      category: 'Frontend',
+      category: 'Frontend Development',
+      icon: 'FE',
       items: [
-        { name: 'React', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'Tailwind CSS', level: 80 },
-        { name: 'Vite', level: 75 }
+        { name: 'React' },
+        { name: 'JavaScript' },
+        { name: 'HTML/CSS' },
+        { name: 'Tailwind CSS' },
+        { name: 'Vite' }
       ]
     },
     {
-      category: 'Backend',
+      category: 'Backend Development',
+      icon: 'BE',
       items: [
-        { name: 'Node.js', level: 80 },
-        { name: 'Express', level: 75 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'REST APIs', level: 85 }
+        { name: 'Node.js' },
+        { name: 'Express' },
+        { name: 'MongoDB' },
+        { name: 'REST APIs' }
       ]
     },
     {
-      category: 'Tools',
+      category: 'Tools & Platforms',
+      icon: 'TP',
       items: [
-        { name: 'Git', level: 85 },
-        { name: 'VS Code', level: 90 },
-        { name: 'Figma', level: 65 },
-        { name: 'Postman', level: 70 }
+        { name: 'Git' },
+        { name: 'VS Code' },
+        { name: 'Figma' },
+        { name: 'Postman' }
       ]
     }
   ]
 
   return (
-    <section className="py-16 px-6 bg-white">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          Technical <span className="text-blue-600">Skills</span>
-        </h2>
+    <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-gray-800 mb-4">
+            My <span className="text-blue-600 relative">
+              Technical Skills
+              <span className="absolute bottom-1 left-0 w-full h-1 bg-blue-400 opacity-30 rounded"></span>
+            </span>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Here's a comprehensive overview of my technical capabilities
+          </p>
+        </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
           {skills.map((skillCategory, index) => (
-            <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-700 mb-4">
-                {skillCategory.category}
-              </h3>
-              <div className="space-y-4">
+            <div 
+              key={index} 
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1"
+            >
+              <div className="flex items-center mb-8">
+                <div className="text-4xl mr-4 bg-blue-50 p-3 rounded-full text-blue-600 font-bold flex items-center justify-center w-14 h-14">
+                  {skillCategory.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  {skillCategory.category}
+                </h3>
+              </div>
+              
+              <div className="space-y-6">
                 {skillCategory.items.map((skill, idx) => (
-                  <div key={idx}>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-600">{skill.name}</span>
-                      <span className="text-gray-500">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div 
-                        className="bg-blue-600 h-2.5 rounded-full" 
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                  <div key={idx} className="group flex items-center">
+                    <span className="font-medium text-lg text-gray-700 group-hover:text-blue-600 transition-colors">
+                      {skill.name}
+                    </span>
                   </div>
                 ))}
               </div>
