@@ -148,7 +148,7 @@ export default function Intro() {
                 className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full"
               />
               <img
-                src="/placeholder.svg?height=400&width=400"
+                src="/me.jpg?height=400&width=400"
                 alt="Varunesh T"
                 className="w-full h-full object-cover object-center relative z-10"
               />
