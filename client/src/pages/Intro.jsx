@@ -4,7 +4,7 @@ export default function Intro() {
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Hi, I'm <span className="text-blue-600">Your Name</span>
+            Hi, I'm <span className="text-blue-600">VARUNESH T</span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-600 mb-6">
             Frontend Developer | Backend Enthusiast
@@ -18,9 +18,13 @@ export default function Intro() {
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">
               Contact Me
             </button>
-            <button className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium">
-              View Projects
-            </button>
+            <a
+              href="/22ITR113_VARUNESH_T.pdf"
+              download
+              className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium flex items-center justify-center"
+            >
+              Download CV
+            </a>
           </div>
         </div>
         <div className="md:w-1/2 flex justify-center">
