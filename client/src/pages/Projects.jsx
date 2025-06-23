@@ -1,25 +1,25 @@
 export default function Projects() {
   const projects = [
     {
-      title: "E-commerce Platform",
+      title: "Blog Platform",
       description: "A full-stack e-commerce application with React, Node.js, and MongoDB.",
-      technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      technologies: ["React", "Node.js", "MongoDB", "CSS"],
       image: "project1.jpg",
       link: "#"
     },
     {
-      title: "Task Management App",
+      title: "Recipe Finder",
       description: "A productivity application for managing tasks with drag-and-drop functionality.",
       technologies: ["React", "Firebase", "Material UI"],
       image: "project2.jpg",
       link: "#"
     },
     {
-      title: "Portfolio Website",
+      title: "ResortEase",
       description: "A responsive portfolio website built with modern web technologies.",
       technologies: ["React", "Vite", "Tailwind CSS"],
       image: "project3.jpg",
-      link: "#"
+      link: "resort-zeta.vercel.app"
     }
   ]
 
