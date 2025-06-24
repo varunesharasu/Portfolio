@@ -96,13 +96,29 @@ function App() {
         <Footer />
       </motion.div>
 
-      {/* Scroll Progress Bar */}
+      {/* Enhanced Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 z-50 origin-left shadow-lg"
         style={{
           scaleX: scrollY / (document.documentElement.scrollHeight - window.innerHeight),
         }}
       />
+
+      {/* Floating scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: scrollY > 100 ? 1 : 0 }}
+        className="fixed bottom-8 right-8 z-40"
+      >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        >
+          <span className="text-xl">↑</span>
+        </motion.button>
+      </motion.div>
     </div>
   )
 }

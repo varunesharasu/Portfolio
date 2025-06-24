@@ -32,7 +32,7 @@ export default function Projects() {
       title: "ResortEase",
       description:
         "A comprehensive resort management system with booking, customer management, and analytics dashboard.",
-      technologies: ["React", "Node js", "CSS", "Firebase" , "Chart.js"],
+      technologies: ["React", "Node js", "CSS", "Firebase", "Chart.js"],
       image: "/resort.png?height=300&width=400",
       link: "https://resort-zeta.vercel.app",
       github: "https://github.com/varunesharasu/ResortEase",
@@ -43,7 +43,7 @@ export default function Projects() {
 
   return (
     <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Background Animation */}
+      {/* Enhanced Background Animation */}
       <div className="absolute inset-0">
         <motion.div
           animate={{
@@ -52,6 +52,14 @@ export default function Projects() {
           }}
           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
           className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-blue-200/10 to-purple-200/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [360, 180, 0],
+          }}
+          transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-cyan-200/10 to-green-200/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -66,15 +74,23 @@ export default function Projects() {
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4"
+            whileHover={{ scale: 1.05 }}
+            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4 shadow-lg backdrop-blur-sm border border-white/50"
           >
             🚀 My Work
           </motion.span>
           <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
             Featured{" "}
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <motion.span
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
+              style={{ backgroundSize: "300% 300%" }}
+            >
               Projects
-            </span>
+            </motion.span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Here are some of my recent projects. Each one was built to solve a specific problem or explore new
@@ -94,7 +110,7 @@ export default function Projects() {
               className="group relative"
             >
               <motion.div
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="bg-white/80 backdrop-blur-lg rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 relative"
               >
                 {/* Project Image */}
@@ -133,6 +149,8 @@ export default function Projects() {
                     <div className="flex space-x-4">
                       <motion.a
                         href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="bg-white text-gray-800 px-4 py-2 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-100 transition-colors"
@@ -142,6 +160,8 @@ export default function Projects() {
                       </motion.a>
                       <motion.a
                         href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="bg-gray-800 text-white px-4 py-2 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-700 transition-colors"
@@ -198,6 +218,8 @@ export default function Projects() {
                   >
                     <motion.a
                       href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
@@ -206,6 +228,8 @@ export default function Projects() {
                     </motion.a>
                     <motion.a
                       href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:border-blue-500 hover:text-blue-600 transition-all duration-300"

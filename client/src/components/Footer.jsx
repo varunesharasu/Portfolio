@@ -46,14 +46,16 @@ export default function Footer() {
           className="flex justify-center space-x-6 mb-8"
         >
           {[
-            { icon: "📚", name: "GitHub", url: "#" },
-            { icon: "💼", name: "LinkedIn", url: "#" },
+            { icon: "📚", name: "GitHub", url: "https://github.com/varunesharasu" },
+            { icon: "💼", name: "LinkedIn", url: "https://www.linkedin.com/in/varunesht/" },
             { icon: "🐦", name: "Twitter", url: "#" },
             { icon: "📧", name: "Email", url: "mailto:tvarunesharasu@gmail.com" },
           ].map((social, index) => (
             <motion.a
               key={index}
               href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 + 0.5 }}

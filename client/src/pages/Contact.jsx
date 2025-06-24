@@ -47,15 +47,35 @@ export default function Contact() {
   ]
 
   const socialLinks = [
-    { icon: "📚", name: "GitHub", url: "#", color: "hover:bg-gray-800" },
-    { icon: "💼", name: "LinkedIn", url: "#", color: "hover:bg-blue-600" },
-    { icon: "🐦", name: "Twitter", url: "#", color: "hover:bg-blue-400" },
-    { icon: "📷", name: "Instagram", url: "#", color: "hover:bg-pink-500" },
+    {
+      icon: "📚",
+      name: "GitHub",
+      url: "https://github.com/varunesharasu",
+      color: "hover:bg-gray-800",
+    },
+    {
+      icon: "💼",
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/varunesht/",
+      color: "hover:bg-blue-600",
+    },
+    {
+      icon: "🐦",
+      name: "Twitter",
+      url: "#",
+      color: "hover:bg-blue-400",
+    },
+    {
+      icon: "📷",
+      name: "Instagram",
+      url: "#",
+      color: "hover:bg-pink-500",
+    },
   ]
 
   return (
     <section className="py-20 px-6 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
         <motion.div
           animate={{
@@ -73,6 +93,17 @@ export default function Contact() {
           transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
           className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-r from-cyan-200/10 to-blue-200/10 rounded-full blur-3xl"
         />
+
+        {/* New floating elements */}
+        <motion.div
+          animate={{
+            y: [0, -40, 0],
+            x: [0, 20, 0],
+            rotate: [0, 45, 0],
+          }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          className="absolute top-1/4 right-1/3 w-16 h-16 bg-gradient-to-br from-pink-300/20 to-purple-300/20 rounded-lg blur-sm"
+        />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -86,15 +117,23 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4"
+            whileHover={{ scale: 1.05 }}
+            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4 shadow-lg backdrop-blur-sm border border-white/50"
           >
             💬 Let's Connect
           </motion.span>
           <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
             Get In{" "}
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <motion.span
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
+              style={{ backgroundSize: "300% 300%" }}
+            >
               Touch
-            </span>
+            </motion.span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
@@ -147,27 +186,44 @@ export default function Contact() {
                   <motion.a
                     key={index}
                     href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 + 0.5 }}
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-14 h-14 bg-white/70 backdrop-blur-lg ${social.color} text-white rounded-2xl flex items-center justify-center text-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50`}
+                    className={`w-14 h-14 bg-white/70 backdrop-blur-lg ${social.color} text-white rounded-2xl flex items-center justify-center text-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden group`}
                   >
-                    {social.icon}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileHover={{ scale: 1 }}
+                      className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/80 rounded-2xl"
+                    />
+                    <span className="relative z-10">{social.icon}</span>
                   </motion.a>
                 ))}
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Enhanced Contact Form */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <form
               onSubmit={handleSubmit}
-              className="bg-white/70 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white/50"
+              className="bg-white/70 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white/50 relative overflow-hidden"
             >
-              <div className="space-y-6">
+              {/* Form background animation */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.05, 1],
+                  opacity: [0.1, 0.2, 0.1],
+                }}
+                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-3xl"
+              />
+
+              <div className="space-y-6 relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -177,7 +233,7 @@ export default function Contact() {
                     Name *
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.02 }}
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)" }}
                     type="text"
                     id="name"
                     name="name"
@@ -198,7 +254,7 @@ export default function Contact() {
                     Email *
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.02 }}
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)" }}
                     type="email"
                     id="email"
                     name="email"
@@ -219,7 +275,7 @@ export default function Contact() {
                     Subject
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.02 }}
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)" }}
                     type="text"
                     id="subject"
                     name="subject"
@@ -239,7 +295,7 @@ export default function Contact() {
                     Message *
                   </label>
                   <motion.textarea
-                    whileFocus={{ scale: 1.02 }}
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)" }}
                     id="message"
                     name="message"
                     value={formData.message}
@@ -255,12 +311,21 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
+                    y: -2,
+                  }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center relative overflow-hidden group"
                 >
+                  <motion.div
+                    animate={{ x: [-100, 100] }}
+                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:via-white/30"
+                  />
                   {isSubmitting ? (
                     <motion.div
                       animate={{ rotate: 360 }}
@@ -270,14 +335,14 @@ export default function Contact() {
                   ) : (
                     <span className="mr-2">🚀</span>
                   )}
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <span className="relative z-10">{isSubmitting ? "Sending..." : "Send Message"}</span>
                 </motion.button>
               </div>
             </form>
           </motion.div>
         </div>
 
-        {/* Quick Contact Cards */}
+        {/* Enhanced Quick Contact Cards */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -295,11 +360,21 @@ export default function Contact() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 + 0.7 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
+              className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden group"
             >
-              <div className="text-4xl mb-4">{card.icon}</div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">{card.title}</h4>
-              <p className="text-gray-600">{card.desc}</p>
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.1, 0.2, 0.1],
+                }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index }}
+                className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-2xl"
+              />
+              <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-4xl mb-4 relative z-10">
+                {card.icon}
+              </motion.div>
+              <h4 className="text-xl font-bold text-gray-800 mb-2 relative z-10">{card.title}</h4>
+              <p className="text-gray-600 relative z-10">{card.desc}</p>
             </motion.div>
           ))}
         </motion.div>
