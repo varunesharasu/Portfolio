@@ -32,10 +32,11 @@ export default function Footer() {
           className="mb-8"
         >
           <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            VARUNESH.DEV
+            VARUNESH T
           </h3>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Crafting digital experiences with passion and precision. Let's build something amazing together.
+            Full Stack Developer passionate about creating innovative solutions and building amazing digital
+            experiences.
           </p>
         </motion.div>
 
@@ -47,9 +48,9 @@ export default function Footer() {
         >
           {[
             { icon: "📚", name: "GitHub", url: "https://github.com/varunesharasu" },
-            { icon: "💼", name: "LinkedIn", url: "https://www.linkedin.com/in/varunesht/" },
-            { icon: "🐦", name: "Twitter", url: "#" },
+            { icon: "💼", name: "LinkedIn", url: "https://linkedin.com/in/varunesht/" },
             { icon: "📧", name: "Email", url: "mailto:tvarunesharasu@gmail.com" },
+            { icon: "📱", name: "Phone", url: "tel:+919360793223" },
           ].map((social, index) => (
             <motion.a
               key={index}

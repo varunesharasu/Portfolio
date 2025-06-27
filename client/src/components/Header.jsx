@@ -11,6 +11,7 @@ export default function Header({ activeSection, setActiveSection }) {
     { id: "intro", label: "Home", icon: "🏠" },
     { id: "skills", label: "Skills", icon: "⚡" },
     { id: "projects", label: "Projects", icon: "🚀" },
+    { id: "achievements", label: "Achievements", icon: "🏆" },
     { id: "education", label: "Education", icon: "🎓" },
     { id: "contact", label: "Contact", icon: "📧" },
   ]
@@ -27,9 +28,9 @@ export default function Header({ activeSection, setActiveSection }) {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-lg shadow-lg border-b border-white/20" : "bg-transparent"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        isScrolled ? "bg-white/90 backdrop-blur-xl shadow-xl border-b border-white/30" : "bg-transparent"
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
@@ -38,11 +39,11 @@ export default function Header({ activeSection, setActiveSection }) {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
           >
-            VARUNESH.DEV
+            VARUNESH T
           </motion.div>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-1">
+          <ul className="hidden md:flex space-x-2">
             {navItems.map((item, index) => (
               <motion.li
                 key={item.id}
@@ -52,12 +53,12 @@ export default function Header({ activeSection, setActiveSection }) {
               >
                 <motion.button
                   onClick={() => setActiveSection(item.id)}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                  className={`relative px-5 py-3 rounded-full font-medium transition-all duration-300 ${
                     activeSection === item.id
                       ? "text-white bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg"
-                      : "text-gray-700 hover:text-blue-600 hover:bg-white/50"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-white/60 backdrop-blur-sm"
                   }`}
                 >
                   <span className="mr-2">{item.icon}</span>
@@ -78,20 +79,20 @@ export default function Header({ activeSection, setActiveSection }) {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/20 backdrop-blur-sm"
+            className="md:hidden p-3 rounded-xl bg-white/30 backdrop-blur-sm border border-white/40"
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
               <motion.div
                 animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="w-full h-0.5 bg-gray-700 transition-all"
+                className="w-full h-0.5 bg-gray-700 transition-all rounded-full"
               />
               <motion.div
                 animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="w-full h-0.5 bg-gray-700 transition-all"
+                className="w-full h-0.5 bg-gray-700 transition-all rounded-full"
               />
               <motion.div
                 animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="w-full h-0.5 bg-gray-700 transition-all"
+                className="w-full h-0.5 bg-gray-700 transition-all rounded-full"
               />
             </div>
           </motion.button>
@@ -101,7 +102,7 @@ export default function Header({ activeSection, setActiveSection }) {
         <motion.div
           initial={false}
           animate={isMobileMenuOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
-          className="md:hidden overflow-hidden bg-white/90 backdrop-blur-lg rounded-lg mt-4"
+          className="md:hidden overflow-hidden bg-white/95 backdrop-blur-xl rounded-2xl mt-4 border border-white/40"
         >
           <ul className="py-4 space-y-2">
             {navItems.map((item) => (
@@ -111,7 +112,7 @@ export default function Header({ activeSection, setActiveSection }) {
                     setActiveSection(item.id)
                     setIsMobileMenuOpen(false)
                   }}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
+                  className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-300 ${
                     activeSection === item.id
                       ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
                       : "text-gray-700 hover:bg-blue-50"

@@ -8,117 +8,76 @@ export default function Education() {
 
   const education = [
     {
-      degree: "Bachelor of Technology in Information Technology",
+      degree: "Bachelor of Information Technology",
       institution: "Kongu Engineering College",
       year: "2022 - 2026",
       description:
-        "A four-year undergraduate program focused on engineering and technology with specialization in modern software development practices.",
+        "Currently pursuing Bachelor of Information Technology with focus on modern software development, web technologies, and system design.",
       icon: "🎓",
       color: "from-blue-500 to-cyan-500",
-      gpa: "8.5/10",
+      gpa: "7.41/10",
       location: "Perundurai, Tamil Nadu",
       achievements: [
-        "Dean's List for Academic Excellence",
-        "Active member of Coding Club",
-        "Participated in multiple hackathons",
-        "Led team projects in web development",
+        "First place in INNOVENTURES competition",
+        "Third place in Paper Presentation",
+        "Selected for Smart India Hackathon 2024",
+        "Active member of technical clubs",
       ],
       subjects: [
-        "Data Structures",
+        "Data Structures & Algorithms",
         "Web Development",
-        "Database Management",
+        "Database Management Systems",
         "Software Engineering",
         "Computer Networks",
+        "Operating Systems",
       ],
-      projects: 12,
-      certifications: 5,
+      projects: 3,
+      certifications: 1,
     },
     {
       degree: "Higher Secondary Certificate (HSC)",
       institution: "The Optimus Public School",
       year: "2021 - 2022",
       description:
-        "Completed higher secondary education with focus on Mathematics, Physics, and Chemistry, building strong analytical and problem-solving foundation.",
+        "Completed higher secondary education with focus on Mathematics, Physics, and Chemistry, building strong analytical foundation.",
       icon: "📚",
       color: "from-green-500 to-emerald-500",
-      gpa: "85%",
+      gpa: "67.4%",
       location: "Erode, Tamil Nadu",
       achievements: [
-        "School Topper in Computer Science",
-        "Mathematics Olympiad Participant",
-        "Science Fair Winner",
-        "Student Council Member",
+        "Strong performance in Mathematics",
+        "Consistent academic progress",
+        "Active participation in school activities",
+        "Foundation for engineering studies",
       ],
       subjects: ["Mathematics", "Physics", "Chemistry", "Computer Science", "English"],
-      projects: 3,
-      certifications: 2,
+      projects: 2,
+      certifications: 0,
     },
     {
       degree: "Secondary School Leaving Certificate (SSLC)",
       institution: "The Optimus Public School",
       year: "2019 - 2020",
       description:
-        "Completed secondary education with excellent grades, developing strong foundation in core subjects and discovering passion for technology.",
+        "Completed secondary education with good grades, developing strong foundation in core subjects and discovering interest in technology.",
       icon: "🏫",
       color: "from-purple-500 to-pink-500",
-      gpa: "92%",
+      gpa: "67.8%",
       location: "Erode, Tamil Nadu",
       achievements: [
-        "Class Valedictorian",
-        "Best Student in Computer Science",
-        "Inter-school Quiz Competition Winner",
-        "Perfect Attendance Award",
+        "Good academic performance",
+        "Developed interest in computer science",
+        "Strong foundation in mathematics",
+        "Prepared for higher secondary studies",
       ],
       subjects: ["Mathematics", "Science", "Social Studies", "English", "Computer Applications"],
-      projects: 2,
-      certifications: 1,
+      projects: 1,
+      certifications: 0,
     },
   ]
 
   return (
     <section className="py-20 px-6 bg-gradient-to-br from-white via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3],
-            rotate: [0, 180, 360],
-          }}
-          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-            rotate: [360, 180, 0],
-          }}
-          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-r from-cyan-200/20 to-blue-200/20 rounded-full blur-3xl"
-        />
-
-        {/* New floating academic elements */}
-        <motion.div
-          animate={{
-            y: [0, -40, 0],
-            x: [0, 20, 0],
-            rotate: [0, 15, 0],
-          }}
-          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute top-1/3 right-1/3 w-20 h-20 bg-gradient-to-br from-yellow-300/20 to-orange-300/20 rounded-lg blur-sm"
-        />
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -15, 0],
-            rotate: [0, -20, 0],
-          }}
-          transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 3 }}
-          className="absolute bottom-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-pink-300/20 to-purple-300/20 rounded-full blur-sm"
-        />
-      </div>
-
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -146,12 +105,6 @@ export default function Education() {
               style={{ backgroundSize: "300% 300%" }}
             >
               Background
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="absolute bottom-2 left-0 w-full h-2 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full"
-              />
             </motion.span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -160,7 +113,7 @@ export default function Education() {
         </motion.div>
 
         <div className="relative">
-          {/* Enhanced Timeline Line */}
+          {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-indigo-500 rounded-full hidden md:block">
             <motion.div
               animate={{ y: [0, 20, 0] }}
@@ -178,7 +131,7 @@ export default function Education() {
                 transition={{ delay: index * 0.2, duration: 0.8 }}
                 className="relative pl-0 md:pl-20 group"
               >
-                {/* Enhanced Timeline Dot */}
+                {/* Timeline Dot */}
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
@@ -189,14 +142,9 @@ export default function Education() {
                 >
                   <div className="absolute inset-1 bg-white rounded-full" />
                   <div className={`absolute inset-2 bg-gradient-to-br ${edu.color} rounded-full`} />
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-                    className={`absolute inset-0 bg-gradient-to-br ${edu.color} rounded-full opacity-30`}
-                  />
                 </motion.div>
 
-                {/* Enhanced Floating Icon */}
+                {/* Floating Icon */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0, rotate: -180 }}
                   whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -207,21 +155,11 @@ export default function Education() {
                   <span className="text-3xl">{edu.icon}</span>
                 </motion.div>
 
-                {/* Enhanced Content Card */}
+                {/* Content Card */}
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="bg-white/90 backdrop-blur-lg p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 relative overflow-hidden group-hover:border-blue-200"
                 >
-                  {/* Animated Gradient Background */}
-                  <motion.div
-                    animate={{
-                      opacity: [0, 0.05, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                    className={`absolute inset-0 bg-gradient-to-br ${edu.color} rounded-3xl`}
-                  />
-
                   <div className="relative z-10">
                     {/* Header Section */}
                     <motion.div
@@ -355,99 +293,11 @@ export default function Education() {
                       </motion.span>
                     </motion.button>
                   </div>
-
-                  {/* Enhanced Decorative Elements */}
-                  <motion.div
-                    animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-                    transition={{
-                      rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                      scale: { duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-                    }}
-                    className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full"
-                  />
-                  <motion.div
-                    animate={{ rotate: -360, scale: [1, 0.8, 1] }}
-                    transition={{
-                      rotate: { duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                      scale: { duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-                    }}
-                    className="absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full"
-                  />
-
-                  {/* Hover Effect Lines */}
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${edu.color} origin-left`}
-                  />
                 </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Enhanced Achievement Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
-        >
-          {[
-            { number: "4+", label: "Years of Study", icon: "📖", color: "from-blue-500 to-cyan-500" },
-            { number: "85%", label: "Average Grade", icon: "⭐", color: "from-yellow-500 to-orange-500" },
-            { number: "17+", label: "Projects Completed", icon: "🚀", color: "from-green-500 to-emerald-500" },
-            { number: "8+", label: "Certifications", icon: "🏆", color: "from-purple-500 to-pink-500" },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 + 0.9 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white/80 backdrop-blur-lg p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden group"
-            >
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.1, 0.2, 0.1],
-                }}
-                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index }}
-                className={`absolute inset-0 bg-gradient-to-br ${stat.color} rounded-2xl`}
-              />
-              <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-3xl mb-2 relative z-10">
-                {stat.icon}
-              </motion.div>
-              <div className="text-3xl font-bold text-gray-800 mb-1 relative z-10">{stat.number}</div>
-              <div className="text-gray-600 text-sm relative z-10">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Academic Timeline Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="mt-16 text-center"
-        >
-          <div className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white/50 relative overflow-hidden">
-            <motion.div
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.1, 0.15, 0.1],
-              }}
-              transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-3xl"
-            />
-            <h3 className="text-2xl font-bold text-gray-800 mb-4 relative z-10">Academic Excellence Journey</h3>
-            <p className="text-gray-600 leading-relaxed relative z-10">
-              From foundational learning in secondary school to specialized technical education in college, my academic
-              journey has been marked by consistent excellence, active participation in extracurricular activities, and
-              a growing passion for technology and innovation.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

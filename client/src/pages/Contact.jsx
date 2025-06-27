@@ -31,18 +31,21 @@ export default function Contact() {
       title: "Email",
       value: "tvarunesharasu@gmail.com",
       color: "from-blue-500 to-cyan-500",
+      link: "mailto:tvarunesharasu@gmail.com",
     },
     {
       icon: "📱",
       title: "Phone",
       value: "+91 93607 93223",
       color: "from-green-500 to-emerald-500",
+      link: "tel:+919360793223",
     },
     {
       icon: "📍",
       title: "Location",
       value: "Erode, Tamil Nadu",
       color: "from-purple-500 to-pink-500",
+      link: "#",
     },
   ]
 
@@ -56,7 +59,7 @@ export default function Contact() {
     {
       icon: "💼",
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/varunesht/",
+      url: "https://linkedin.com/in/varunesht/",
       color: "hover:bg-blue-600",
     },
     {
@@ -75,37 +78,6 @@ export default function Contact() {
 
   return (
     <section className="py-20 px-6 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 90, 180, 270, 360],
-          }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-blue-200/10 to-purple-200/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [360, 270, 180, 90, 0],
-          }}
-          transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-r from-cyan-200/10 to-blue-200/10 rounded-full blur-3xl"
-        />
-
-        {/* New floating elements */}
-        <motion.div
-          animate={{
-            y: [0, -40, 0],
-            x: [0, 20, 0],
-            rotate: [0, 45, 0],
-          }}
-          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute top-1/4 right-1/3 w-16 h-16 bg-gradient-to-br from-pink-300/20 to-purple-300/20 rounded-lg blur-sm"
-        />
-      </div>
-
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -118,7 +90,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4 shadow-lg backdrop-blur-sm border border-white/50"
+            className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-6 shadow-lg backdrop-blur-sm border border-white/50"
           >
             💬 Let's Connect
           </motion.span>
@@ -150,13 +122,14 @@ export default function Contact() {
             <h3 className="text-3xl font-bold text-gray-800 mb-8">Contact Information</h3>
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <motion.div
+                <motion.a
                   key={index}
+                  href={info.link}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex items-center p-6 bg-white/70 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 group"
+                  className="flex items-center p-6 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 group block"
                 >
                   <motion.div
                     whileHover={{ scale: 1.2, rotate: 10 }}
@@ -170,7 +143,7 @@ export default function Contact() {
                       {info.value}
                     </p>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
 
@@ -193,36 +166,23 @@ export default function Contact() {
                     transition={{ delay: index * 0.1 + 0.5 }}
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-14 h-14 bg-white/70 backdrop-blur-lg ${social.color} text-white rounded-2xl flex items-center justify-center text-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden group`}
+                    className={`w-14 h-14 bg-white/80 backdrop-blur-lg ${social.color} text-white rounded-2xl flex items-center justify-center text-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden group`}
                   >
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileHover={{ scale: 1 }}
-                      className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/80 rounded-2xl"
-                    />
-                    <span className="relative z-10">{social.icon}</span>
+                    <span className="relative z-10 text-gray-700 group-hover:text-white transition-colors">
+                      {social.icon}
+                    </span>
                   </motion.a>
                 ))}
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Enhanced Contact Form */}
+          {/* Contact Form */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <form
               onSubmit={handleSubmit}
-              className="bg-white/70 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white/50 relative overflow-hidden"
+              className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white/50 relative overflow-hidden"
             >
-              {/* Form background animation */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0.1, 0.2, 0.1],
-                }}
-                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-3xl"
-              />
-
               <div className="space-y-6 relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -240,7 +200,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/60 backdrop-blur-sm"
                     placeholder="Your full name"
                   />
                 </motion.div>
@@ -261,7 +221,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/60 backdrop-blur-sm"
                     placeholder="your.email@example.com"
                   />
                 </motion.div>
@@ -281,7 +241,7 @@ export default function Contact() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white/60 backdrop-blur-sm"
                     placeholder="What's this about?"
                   />
                 </motion.div>
@@ -302,7 +262,7 @@ export default function Contact() {
                     onChange={handleChange}
                     rows={6}
                     required
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 resize-none bg-white/50 backdrop-blur-sm"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 resize-none bg-white/60 backdrop-blur-sm"
                     placeholder="Tell me about your project or idea..."
                   />
                 </motion.div>
@@ -319,13 +279,8 @@ export default function Contact() {
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center relative overflow-hidden group"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center relative overflow-hidden group"
                 >
-                  <motion.div
-                    animate={{ x: [-100, 100] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:via-white/30"
-                  />
                   {isSubmitting ? (
                     <motion.div
                       animate={{ rotate: 360 }}
@@ -341,43 +296,6 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
-
-        {/* Enhanced Quick Contact Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-20 grid md:grid-cols-3 gap-6"
-        >
-          {[
-            { icon: "⚡", title: "Quick Response", desc: "I'll get back to you within 24 hours" },
-            { icon: "🤝", title: "Collaboration", desc: "Open to exciting project opportunities" },
-            { icon: "💡", title: "Consultation", desc: "Free initial consultation for your ideas" },
-          ].map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 + 0.7 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden group"
-            >
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.1, 0.2, 0.1],
-                }}
-                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index }}
-                className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-2xl"
-              />
-              <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-4xl mb-4 relative z-10">
-                {card.icon}
-              </motion.div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2 relative z-10">{card.title}</h4>
-              <p className="text-gray-600 relative z-10">{card.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

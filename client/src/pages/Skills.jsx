@@ -8,195 +8,121 @@ export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState("All")
 
   const skills = [
-    // Frontend Skills
+    // Languages
     {
-      name: "React",
-      icon: "⚛️",
-      category: "Frontend",
+      name: "C",
+      icon: "🔧",
+      category: "Languages",
       color: "from-blue-500 to-cyan-400",
-      description: "Building dynamic UIs",
-      level: 90,
-    },
-    {
-      name: "JavaScript",
-      icon: "🟨",
-      category: "Frontend",
-      color: "from-yellow-500 to-orange-400",
-      description: "Modern ES6+ features",
+      description: "System programming",
       level: 85,
     },
     {
-      name: "HTML/CSS",
-      icon: "🌐",
-      category: "Frontend",
-      color: "from-orange-500 to-red-400",
-      description: "Semantic & responsive",
-      level: 95,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: "💨",
-      category: "Frontend",
-      color: "from-teal-500 to-blue-400",
-      description: "Utility-first styling",
+      name: "Python",
+      icon: "🐍",
+      category: "Languages",
+      color: "from-green-500 to-emerald-400",
+      description: "Data science & ML",
       level: 88,
     },
+
+    // Frontend
     {
-      name: "Vite",
-      icon: "⚡",
+      name: "React.js",
+      icon: "⚛️",
       category: "Frontend",
-      color: "from-purple-500 to-pink-400",
-      description: "Lightning fast builds",
-      level: 80,
+      color: "from-blue-400 to-cyan-300",
+      description: "Building dynamic UIs",
+      level: 90,
     },
 
-    // Backend Skills
+    // Backend
     {
       name: "Node.js",
       icon: "🟢",
       category: "Backend",
-      color: "from-green-500 to-emerald-400",
+      color: "from-green-400 to-emerald-300",
       description: "Server-side JavaScript",
-      level: 82,
+      level: 85,
     },
     {
-      name: "Express",
+      name: "Express.js",
       icon: "🚂",
       category: "Backend",
-      color: "from-gray-600 to-gray-400",
+      color: "from-gray-500 to-gray-300",
       description: "Web application framework",
-      level: 78,
+      level: 82,
+    },
+
+    // Database
+    {
+      name: "MySQL",
+      icon: "🗄️",
+      category: "Database",
+      color: "from-orange-500 to-red-400",
+      description: "Relational database",
+      level: 80,
     },
     {
       name: "MongoDB",
       icon: "🍃",
-      category: "Backend",
-      color: "from-green-600 to-green-400",
+      category: "Database",
+      color: "from-green-500 to-green-300",
       description: "NoSQL database",
-      level: 75,
-    },
-    {
-      name: "REST APIs",
-      icon: "🔗",
-      category: "Backend",
-      color: "from-indigo-500 to-purple-400",
-      description: "RESTful services",
       level: 85,
     },
 
-    // Design Skills
-    {
-      name: "Adobe Photoshop",
-      icon: "🎨",
-      category: "Design",
-      color: "from-blue-600 to-indigo-500",
-      description: "Photo editing & design",
-      level: 70,
-    },
-    {
-      name: "Figma",
-      icon: "🎯",
-      category: "Design",
-      color: "from-pink-500 to-purple-400",
-      description: "UI/UX design",
-      level: 75,
-    },
-
-    // Tools
+    // Version Control
     {
       name: "Git",
       icon: "📚",
-      category: "Tools",
-      color: "from-red-500 to-pink-400",
+      category: "Version Control",
+      color: "from-red-400 to-pink-300",
       description: "Version control",
       level: 90,
     },
     {
-      name: "VS Code",
-      icon: "💙",
-      category: "Tools",
-      color: "from-blue-600 to-indigo-400",
-      description: "Code editor",
-      level: 95,
+      name: "GitHub",
+      icon: "🐙",
+      category: "Version Control",
+      color: "from-gray-600 to-gray-400",
+      description: "Code collaboration",
+      level: 88,
     },
+
+    // Design
     {
-      name: "Postman",
-      icon: "📮",
-      category: "Tools",
-      color: "from-orange-500 to-red-400",
-      description: "API testing",
-      level: 80,
+      name: "Figma",
+      icon: "🎨",
+      category: "Design",
+      color: "from-pink-500 to-purple-400",
+      description: "UI/UX design tool",
+      level: 75,
     },
   ]
 
-  const categories = ["All", "Frontend", "Backend", "Design", "Tools"]
+  const interests = [
+    {
+      name: "Web Development",
+      icon: "🌐",
+      description: "Full-stack web applications",
+      color: "from-blue-500 to-purple-500",
+    },
+    {
+      name: "RDBMS",
+      icon: "🗃️",
+      description: "Database design & optimization",
+      color: "from-green-500 to-teal-500",
+    },
+  ]
+
+  const categories = ["All", "Languages", "Frontend", "Backend", "Database", "Version Control", "Design"]
 
   const filteredSkills =
     selectedCategory === "All" ? skills : skills.filter((skill) => skill.category === selectedCategory)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const skillVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        bounce: 0.4,
-        duration: 0.8,
-      },
-    },
-  }
-
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            rotate: 360,
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            rotate: { duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-            scale: { duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-          }}
-          className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            rotate: -360,
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            rotate: { duration: 40, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-            scale: { duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-          }}
-          className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-r from-cyan-200/20 to-blue-200/20 rounded-full blur-3xl"
-        />
-
-        {/* New animated shapes */}
-        <motion.div
-          animate={{
-            y: [0, -50, 0],
-            x: [0, 30, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/4 w-20 h-20 bg-gradient-to-br from-green-300/20 to-blue-300/20 rounded-lg blur-sm"
-        />
-      </div>
-
+    <section className="py-20 px-6 bg-gradient-to-br from-white via-blue-50 to-indigo-50 relative overflow-hidden">
       <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -209,12 +135,12 @@ export default function Skills() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4 shadow-lg backdrop-blur-sm border border-white/50"
+            className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-6 shadow-lg backdrop-blur-sm border border-white/50"
           >
-            ⚡ My Expertise
+            ⚡ My Technical Skills
           </motion.span>
           <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Technical{" "}
+            Skills &{" "}
             <motion.span
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -223,17 +149,11 @@ export default function Skills() {
               className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent relative bg-300%"
               style={{ backgroundSize: "300% 300%" }}
             >
-              Skills
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="absolute bottom-2 left-0 w-full h-2 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full"
-              />
+              Expertise
             </motion.span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Here are the technologies and tools I use to bring ideas to life
+            Technologies and tools I use to build amazing digital experiences
           </p>
         </motion.div>
 
@@ -255,7 +175,7 @@ export default function Skills() {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 selectedCategory === category
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
                   : "bg-white/70 text-gray-700 hover:bg-white/90 shadow-md"
               } backdrop-blur-sm border border-white/50`}
             >
@@ -266,38 +186,41 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16"
         >
           {filteredSkills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              variants={skillVariants}
+              initial={{ opacity: 0, y: 50, scale: 0.8 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  bounce: 0.4,
+                  duration: 0.8,
+                  delay: index * 0.1,
+                },
+              }}
               whileHover={{
                 scale: 1.1,
                 y: -10,
-                rotateY: 10,
-                rotateX: 5,
               }}
               whileTap={{ scale: 0.95 }}
               onHoverStart={() => setHoveredSkill(index)}
               onHoverEnd={() => setHoveredSkill(null)}
               className="group relative"
             >
-              <div className="bg-white/70 backdrop-blur-lg p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/50 relative overflow-hidden h-48 flex flex-col items-center justify-center text-center">
-                {/* Gradient Background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
-                />
-
+              <div className="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/50 relative overflow-hidden h-40 flex flex-col items-center justify-center text-center">
                 {/* Skill Level Progress Bar */}
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   transition={{ delay: index * 0.1, duration: 1 }}
-                  className="absolute top-2 left-2 right-2 h-1 bg-gray-200 rounded-full overflow-hidden"
+                  className="absolute top-1 left-1 right-1 h-0.5 bg-gray-200 rounded-full overflow-hidden"
                 >
                   <div className={`h-full bg-gradient-to-r ${skill.color} rounded-full`} />
                 </motion.div>
@@ -313,13 +236,13 @@ export default function Skills() {
                       : {}
                   }
                   transition={{ duration: 0.6, repeat: hoveredSkill === index ? Number.POSITIVE_INFINITY : 0 }}
-                  className="text-4xl mb-3 relative z-10"
+                  className="text-3xl mb-3 relative z-10"
                 >
                   {skill.icon}
                 </motion.div>
 
                 {/* Skill Name */}
-                <h3 className="text-lg font-bold text-gray-800 mb-2 relative z-10 group-hover:text-gray-900 transition-colors">
+                <h3 className="text-base font-bold text-gray-800 mb-2 relative z-10 group-hover:text-gray-900 transition-colors">
                   {skill.name}
                 </h3>
 
@@ -327,7 +250,7 @@ export default function Skills() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   animate={hoveredSkill === index ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                  className="text-sm font-bold text-gray-600 mb-2 relative z-10"
+                  className="text-xs font-bold text-gray-600 mb-1 relative z-10"
                 >
                   {skill.level}%
                 </motion.div>
@@ -336,111 +259,49 @@ export default function Skills() {
                 <motion.p
                   initial={{ opacity: 0, height: 0 }}
                   animate={hoveredSkill === index ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
-                  className="text-xs text-gray-600 relative z-10 overflow-hidden"
+                  className="text-xs text-gray-600 relative z-10 overflow-hidden text-center"
                 >
                   {skill.description}
                 </motion.p>
-
-                {/* Category Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={hoveredSkill === index ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                  className={`absolute top-4 right-4 px-2 py-1 bg-gradient-to-r ${skill.color} text-white text-xs rounded-full font-medium`}
-                >
-                  {skill.category}
-                </motion.div>
-
-                {/* Enhanced Floating Particles */}
-                <motion.div
-                  animate={{
-                    rotate: 360,
-                    scale: [1, 1.2, 1],
-                  }}
-                  transition={{
-                    rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                    scale: { duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-                  }}
-                  className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full"
-                />
-                <motion.div
-                  animate={{
-                    rotate: -360,
-                    scale: [1, 0.8, 1],
-                  }}
-                  transition={{
-                    rotate: { duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                    scale: { duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-                  }}
-                  className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full"
-                />
-
-                {/* Hover Glow Effect */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={hoveredSkill === index ? { opacity: 1 } : { opacity: 0 }}
-                  className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-20 rounded-3xl blur-xl -z-10`}
-                />
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Enhanced Floating Skills Animation */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, 15, 0],
-                rotate: [0, 10, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 5 + i,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-                delay: i * 0.7,
-              }}
-              className={`absolute w-8 h-8 bg-gradient-to-r ${
-                [
-                  "from-blue-400/20 to-purple-400/20",
-                  "from-green-400/20 to-blue-400/20",
-                  "from-purple-400/20 to-pink-400/20",
-                  "from-yellow-400/20 to-orange-400/20",
-                ][i % 4]
-              } rounded-full blur-sm`}
-              style={{
-                left: `${5 + i * 12}%`,
-                top: `${15 + i * 8}%`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Enhanced Call to Action */}
+        {/* Interests Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-center mt-16"
+          className="text-center mb-12"
         >
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
-              y: -5,
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
-          >
-            <motion.div
-              animate={{ x: [-100, 100] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:via-white/30"
-            />
-            <span className="relative z-10">Explore My Work 🚀</span>
-          </motion.button>
+          <h3 className="text-3xl font-bold text-gray-800 mb-8">Areas of Interest</h3>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {interests.map((interest, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 relative overflow-hidden"
+              >
+                <motion.div
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.1, 0.2, 0.1],
+                  }}
+                  transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index }}
+                  className={`absolute inset-0 bg-gradient-to-br ${interest.color} rounded-3xl`}
+                />
+                <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-4xl mb-4 relative z-10">
+                  {interest.icon}
+                </motion.div>
+                <h4 className="text-xl font-bold text-gray-800 mb-2 relative z-10">{interest.name}</h4>
+                <p className="text-gray-600 relative z-10">{interest.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

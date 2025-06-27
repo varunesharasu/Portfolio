@@ -7,7 +7,7 @@ export default function Intro() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [currentRole, setCurrentRole] = useState(0)
 
-  const roles = ["Frontend Developer", "Backend Enthusiast", "UI/UX Designer", "Problem Solver"]
+  const roles = ["Full Stack Developer", "MERN Stack Developer", "Problem Solver", "Tech Enthusiast"]
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -25,7 +25,7 @@ export default function Intro() {
   }, [])
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+    <section className="h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
       {/* Enhanced Floating Elements */}
       <motion.div
         animate={{
@@ -38,7 +38,7 @@ export default function Intro() {
           scale: { duration: 4, repeat: Number.POSITIVE_INFINITY },
           rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
         }}
-        className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400/40 to-purple-400/40 rounded-full blur-xl"
+        className="absolute top-20 left-4 w-20 h-20 bg-gradient-to-r from-blue-300/30 to-purple-300/30 rounded-full blur-xl"
       />
       <motion.div
         animate={{
@@ -51,55 +51,22 @@ export default function Intro() {
           scale: { duration: 5, repeat: Number.POSITIVE_INFINITY },
           rotate: { duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
         }}
-        className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-purple-400/40 to-pink-400/40 rounded-full blur-xl"
+        className="absolute bottom-20 right-4 w-32 h-32 bg-gradient-to-r from-purple-300/30 to-pink-300/30 rounded-full blur-xl"
       />
 
-      {/* New floating geometric shapes */}
-      <motion.div
-        animate={{
-          y: [0, -30, 0],
-          rotate: [0, 45, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-        className="absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 transform rotate-45 blur-sm"
-      />
-      <motion.div
-        animate={{
-          y: [0, 25, 0],
-          x: [0, 15, 0],
-          rotate: [0, -30, 0],
-        }}
-        transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/3 left-1/4 w-12 h-12 bg-gradient-to-br from-green-400/30 to-emerald-500/30 rounded-full blur-sm"
-      />
-
-      <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="lg:w-1/2 text-center lg:text-left"
+          className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-6"
-          >
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4 shadow-lg backdrop-blur-sm border border-white/50"
-            >
-              👋 Welcome to my portfolio
-            </motion.span>
-          </motion.div>
-
+          {/* Keep all the text content the same */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-5xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight"
           >
             Hi, I'm{" "}
             <motion.span
@@ -107,7 +74,7 @@ export default function Intro() {
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
               transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300% animate-gradient"
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
               style={{ backgroundSize: "300% 300%" }}
             >
               VARUNESH T
@@ -118,7 +85,7 @@ export default function Intro() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-2xl lg:text-3xl text-gray-600 mb-8 h-12"
+            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 h-12"
           >
             <motion.span
               key={currentRole}
@@ -136,17 +103,18 @@ export default function Intro() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-gray-600 mb-10 text-lg leading-relaxed max-w-2xl"
+            className="text-gray-600 mb-10 text-base md:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0"
           >
-            I craft exceptional digital experiences with modern technologies. Currently focused on creating responsive
-            web applications with React and Node.js, bringing ideas to life through clean code and intuitive design.
+            To obtain a challenging position in my dream company in order to expand my experience and skills and work
+            towards the overall growth of the organisation. Passionate about web development and creating innovative
+            solutions.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
             <motion.a
               href="https://www.linkedin.com/in/varunesht/"
@@ -158,7 +126,7 @@ export default function Intro() {
                 y: -2,
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-medium text-lg shadow-lg transition-all duration-300 relative overflow-hidden group"
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-base md:text-lg shadow-lg transition-all duration-300 relative overflow-hidden group"
             >
               <motion.div
                 animate={{ x: [-100, 100] }}
@@ -169,21 +137,16 @@ export default function Intro() {
             </motion.a>
             <motion.a
               href="/22ITR113_VARUNESH_T.pdf"
-              download
+              download="Varunesh_T_Resume.pdf"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 10px 30px rgba(59, 130, 246, 0.2)",
                 y: -2,
               }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full font-medium text-lg flex items-center justify-center transition-all duration-300 backdrop-blur-sm bg-white/50 relative overflow-hidden group"
+              className="border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center transition-all duration-300 backdrop-blur-sm bg-white/60 relative overflow-hidden group"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-                className="absolute inset-0 bg-blue-600 rounded-full"
-              />
-              <span className="relative z-10">Download CV 📄</span>
+              <span className="relative z-10">Download CV �</span>
             </motion.a>
           </motion.div>
         </motion.div>
@@ -192,7 +155,7 @@ export default function Intro() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:w-1/2 flex justify-center"
+          className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -204,19 +167,11 @@ export default function Intro() {
             }}
             className="relative"
           >
-            <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-blue-100 to-purple-100 relative">
+            <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-blue-100 to-purple-100 relative">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full"
-              />
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 0.8, 0.5],
-                }}
-                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                className="absolute inset-2 bg-gradient-to-r from-cyan-400/10 to-pink-400/10 rounded-full"
+                className="absolute inset-0 bg-gradient-to-r from-blue-300/20 to-purple-300/20 rounded-full"
               />
               <img
                 src="/me.jpg?height=400&width=400"
@@ -225,50 +180,50 @@ export default function Intro() {
               />
             </div>
 
-            {/* Enhanced Floating Icons */}
-            <motion.div
-              animate={{
-                y: [0, -15, 0],
-                rotate: [0, 5, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
-              className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <span className="text-2xl">⚛️</span>
-            </motion.div>
+            {/* Enhanced Floating Icons - adjusted for mobile */}
             <motion.div
               animate={{
                 y: [0, -10, 0],
-                rotate: [0, -5, 0],
-                scale: [1, 1.2, 1],
+                rotate: [0, 5, 0],
+                scale: [1, 1.05, 1],
               }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
-              className="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow"
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
+              className="absolute -top-2 -right-2 bg-white rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <span className="text-2xl">💻</span>
-            </motion.div>
-            <motion.div
-              animate={{
-                y: [0, -12, 0],
-                rotate: [0, 3, 0],
-                scale: [1, 1.15, 1],
-              }}
-              transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, delay: 1.5 }}
-              className="absolute top-1/2 -right-8 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <span className="text-xl">🚀</span>
+              <span className="text-lg md:text-xl">⚛️</span>
             </motion.div>
             <motion.div
               animate={{
                 y: [0, -8, 0],
-                rotate: [0, -3, 0],
+                rotate: [0, -5, 0],
                 scale: [1, 1.1, 1],
               }}
-              transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, delay: 2 }}
-              className="absolute top-1/4 -left-6 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow"
+              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
+              className="absolute -bottom-2 -left-2 bg-white rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <span className="text-xl">🎨</span>
+              <span className="text-lg md:text-xl">💻</span>
+            </motion.div>
+            <motion.div
+              animate={{
+                y: [0, -8, 0],
+                rotate: [0, 3, 0],
+                scale: [1, 1.08, 1],
+              }}
+              transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, delay: 1.5 }}
+              className="absolute top-1/2 -right-3 md:-right-4 bg-white rounded-full p-1.5 md:p-2 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <span className="text-sm md:text-lg">🚀</span>
+            </motion.div>
+            <motion.div
+              animate={{
+                y: [0, -6, 0],
+                rotate: [0, -3, 0],
+                scale: [1, 1.05, 1],
+              }}
+              transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, delay: 2 }}
+              className="absolute top-1/4 -left-3 md:-left-4 bg-white rounded-full p-1.5 md:p-2 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <span className="text-sm md:text-lg">🎨</span>
             </motion.div>
           </motion.div>
         </motion.div>

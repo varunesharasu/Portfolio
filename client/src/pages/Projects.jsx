@@ -10,59 +10,43 @@ export default function Projects() {
     {
       title: "Blog Platform",
       description:
-        "A full-stack blogging platform with modern UI, real-time comments, and advanced content management features.",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+        "A User-Friendly Blog Services. Facilitates Creation, Management, and Interaction with blog platform.",
+      technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
       image: "/blog.png?height=300&width=400",
       link: "#",
       github: "https://github.com/varunesharasu/Blog_Platform",
       status: "Live",
       category: "Full Stack",
+      year: "2024",
     },
     {
-      title: "Recipe Finder",
-      description: "An intelligent recipe discovery app with AI-powered recommendations and nutritional analysis.",
-      technologies: ["React", "MongoDB Atlas", "Material UI", "API Integration"],
-      image: "/recipe.png?height=300&width=400",
-      link: "#",
-      github: "https://github.com/varunesharasu/Recipe_Finder",
-      status: "In Progress",
-      category: "Frontend",
-    },
-    {
-      title: "ResortEase",
+      title: "RateSync",
       description:
-        "A comprehensive resort management system with booking, customer management, and analytics dashboard.",
-      technologies: ["React", "Node js", "CSS", "Firebase", "Chart.js"],
-      image: "/resort.png?height=300&width=400",
-      link: "https://resort-zeta.vercel.app",
-      github: "https://github.com/varunesharasu/ResortEase",
+        "A platform that allows users to rate and review various products and services, providing valuable insights and feedback.",
+      technologies: ["MongoDB", "React.js", "Node.js", "API", "Bootstrap"],
+      image: "/ratesync.png?height=300&width=400",
+      link: "https://rate-sync-beta.vercel.app/",
+      github: "https://github.com/varunesharasu/RateSync",
       status: "Live",
       category: "Full Stack",
+      year: "2024",
+    },
+    {
+      title: "RESORTEASE",
+      description:
+        "To make the process of booking a resort easier and more efficient, with proper admin management.",
+      technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      image: "/resort.png?height=300&width=400",
+      link: "https://resort-zeta.vercel.app/",
+      github: "https://github.com/varunesharasu/ResortEase",
+      status: "Live",
+      category: "Machine Learning",
+      year: "2024",
     },
   ]
 
   return (
     <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Enhanced Background Animation */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-blue-200/10 to-purple-200/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [360, 180, 0],
-          }}
-          transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-cyan-200/10 to-green-200/10 rounded-full blur-3xl"
-        />
-      </div>
-
       <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -75,9 +59,9 @@ export default function Projects() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-4 shadow-lg backdrop-blur-sm border border-white/50"
+            className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-6 shadow-lg backdrop-blur-sm border border-white/50"
           >
-            🚀 My Work
+            🚀 My Projects
           </motion.span>
           <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
             Featured{" "}
@@ -93,8 +77,7 @@ export default function Projects() {
             </motion.span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Here are some of my recent projects. Each one was built to solve a specific problem or explore new
-            technologies.
+            Here are some of my recent projects built with modern technologies and innovative solutions.
           </p>
         </motion.div>
 
@@ -111,7 +94,7 @@ export default function Projects() {
             >
               <motion.div
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white/80 backdrop-blur-lg rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 relative"
+                className="bg-white/90 backdrop-blur-lg rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 relative"
               >
                 {/* Project Image */}
                 <div className="relative h-64 overflow-hidden">
@@ -123,6 +106,11 @@ export default function Projects() {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+
+                  {/* Year Badge */}
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700">
+                    {project.year}
+                  </div>
 
                   {/* Status Badge */}
                   <motion.div
@@ -136,7 +124,7 @@ export default function Projects() {
                   </motion.div>
 
                   {/* Category Badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700">
+                  <div className="absolute bottom-4 left-4 px-3 py-1 bg-blue-500/90 backdrop-blur-sm rounded-full text-xs font-semibold text-white">
                     {project.category}
                   </div>
 
@@ -144,7 +132,7 @@ export default function Projects() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: hoveredProject === index ? 1 : 0 }}
-                    className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/80 flex items-center justify-center"
+                    className="absolute inset-0 bg-gradient-to-br from-blue-500/80 to-purple-500/80 flex items-center justify-center"
                   >
                     <div className="flex space-x-4">
                       <motion.a
@@ -222,7 +210,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+                      className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
                     >
                       View Project 🚀
                     </motion.a>
@@ -238,13 +226,6 @@ export default function Projects() {
                     </motion.a>
                   </motion.div>
                 </div>
-
-                {/* Decorative Elements */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                  className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full"
-                />
               </motion.div>
             </motion.div>
           ))}
@@ -257,13 +238,16 @@ export default function Projects() {
           transition={{ delay: 0.5 }}
           className="text-center mt-16"
         >
-          <motion.button
+          <motion.a
+            href="https://github.com/varunesharasu"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            View All Projects 📂
-          </motion.button>
+            View All Projects on GitHub 📂
+          </motion.a>
         </motion.div>
       </div>
     </section>
