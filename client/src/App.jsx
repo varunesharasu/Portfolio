@@ -8,6 +8,7 @@ import Intro from "./pages/Intro"
 import Skills from "./pages/Skills"
 import Projects from "./pages/Projects"
 import Education from "./pages/Education"
+import Achievements from "./pages/Achievements"
 import Contact from "./pages/Contact"
 import LoadingScreen from "./components/loading-screen"
 import ParticleBackground from "./components/particle-background"
@@ -21,6 +22,7 @@ function App() {
   const skillsRef = useRef(null)
   const projectsRef = useRef(null)
   const educationRef = useRef(null)
+  const achievementsRef = useRef(null)
   const contactRef = useRef(null)
 
   const sectionRefs = {
@@ -28,6 +30,7 @@ function App() {
     skills: skillsRef,
     projects: projectsRef,
     education: educationRef,
+    achievements: achievementsRef,
     contact: contactRef,
   }
 
@@ -85,6 +88,9 @@ function App() {
               </div>
               <div ref={educationRef}>
                 <Education />
+              </div>
+              <div ref={achievementsRef}>
+                <Achievements />
               </div>
               <div ref={contactRef}>
                 <Contact />
