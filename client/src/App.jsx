@@ -12,6 +12,7 @@ import Education from "./pages/Education"
 import Contact from "./pages/Contact"
 import LoadingScreen from "./components/loading-screen"
 import ParticleBackground from "./components/particle-background"
+import Lanyard from './components/Lanyard';
 
 function App() {
   const [activeSection, setActiveSection] = useState("intro")
@@ -77,7 +78,11 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, staggerChildren: 0.1 }}
             >
-              <div ref={introRef}>
+              <div ref={introRef} className="relative">
+                {/* Place Lanyard effect here, above Intro, with transparent background */}
+                <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
+                  <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} transparent={true} />
+                </div>
                 <Intro />
               </div>
               <div ref={skillsRef}>
@@ -125,6 +130,14 @@ function App() {
           <span className="text-xl">↑</span>
         </motion.button>
       </motion.div>
+
+      {/* 
+        IMPORTANT: 
+        The error "Could not load /src/assets/lanyard/card.glb: Unexpected token '/', '// This is'... is not valid JSON"
+        means you are still using the placeholder card.glb file.
+        Download the actual card.glb and lanyard.png from the original repo and place them in src/assets/lanyard/.
+        The animation will not work until you do this.
+      */}
     </div>
   )
 }
