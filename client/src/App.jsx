@@ -12,7 +12,6 @@ import Education from "./pages/Education"
 import Contact from "./pages/Contact"
 import LoadingScreen from "./components/loading-screen"
 import ParticleBackground from "./components/particle-background"
-import Lanyard from './components/Lanyard';
 
 function App() {
   const [activeSection, setActiveSection] = useState("intro")
@@ -80,9 +79,9 @@ function App() {
             >
               <div ref={introRef} className="relative">
                 {/* Place Lanyard effect here, above Intro, with transparent background */}
-                <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
+                {/* <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
                   <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} transparent={true} />
-                </div>
+                </div> */}
                 <Intro />
               </div>
               <div ref={skillsRef}>
