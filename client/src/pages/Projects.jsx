@@ -295,6 +295,16 @@ export default function Projects() {
                 View More Projects
               </motion.button>
             )}
+            {visibleCount >= projects.length && projects.length > 3 && (
+              <motion.button
+                onClick={() => setVisibleCount(3)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block bg-gradient-to-r from-gray-400 to-gray-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                View Less
+              </motion.button>
+            )}
           </div>
         </motion.div>
       </div>
