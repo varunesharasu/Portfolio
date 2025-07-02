@@ -60,7 +60,7 @@ export default function Projects() {
       title: "Recipe Finder",
       description:
         "A simple and efficient recipe search app for discovering new dishes.",
-      technologies: ["React.js", "Node.js", "MongoDB"],
+      technologies: ["API's", "Node.js", "MongoDB"],
       image: "/recipe.png?height=300&width=400",
       link: "#",
       github: "https://github.com/varunesharasu/Recipe_Finder",
