@@ -14,6 +14,7 @@ export default function Achievements() {
       place: "1st Place",
       event: "INNOVENTURES at Kongu Engineering College",
       project: "MENTOR CONNECT",
+      year: "2023",
       description: "Secured First place in INNOVENTURES competition for innovative project 'MENTOR CONNECT'.",
       details: [
         "Developed a comprehensive mentoring platform",
@@ -29,6 +30,7 @@ export default function Achievements() {
       place: "1st Place",
       event: "30-Hour Hackathon",
       project: "Innovative Solution",
+      year: "2023",
       description:
         "Won first prize in an intensive 30-hour hackathon, demonstrating exceptional problem-solving skills and teamwork.",
       details: [
@@ -45,6 +47,7 @@ export default function Achievements() {
       place: "3rd Place",
       event: "Paper Presentation at Kongu Engineering College",
       project: "DEVOPS",
+      year: "2023",
       description:
         "Secured Third place in Paper Presentation competition for comprehensive research on DevOps practices.",
       details: [
@@ -61,6 +64,7 @@ export default function Achievements() {
       place: "Selected",
       event: "Smart India Hackathon 2024 (Inter-college)",
       project: "National Level Competition",
+      year: "2024",
       description:
         "Got selected in Smart India Hackathon 2024 at inter-college level, representing Kongu Engineering College.",
       details: [
@@ -77,6 +81,7 @@ export default function Achievements() {
       place: "Presenter",
       event: "SAMHITA'24 at MIT Chennai",
       project: "Technical Paper",
+      year: "2024",
       description: "Presented a technical paper at SAMHITA'24, hosted by Madras Institute of Technology, Chennai.",
       details: [
         "Presented at prestigious MIT Chennai",
@@ -92,6 +97,7 @@ export default function Achievements() {
       place: "Participant",
       event: "SRISHTI2k24 at PSG College of Technology",
       project: "Hackathon Challenge",
+      year: "2024",
       description: "Participated in hackathon at SRISHTI2k24, hosted by PSG College of Technology, Coimbatore.",
       details: [
         "Competed with top engineering students",
@@ -108,6 +114,7 @@ export default function Achievements() {
       icon: "☁️",
       issuer: "Amazon Web Services",
       color: "from-orange-500 to-yellow-400",
+      link: "https://www.credly.com/badges/your-certificate-link", // Replace with your actual certificate link
     },
   ]
 
@@ -185,6 +192,9 @@ export default function Achievements() {
                       {achievement.place}
                     </span>
                   </div>
+                  <div className="flex items-center text-xs text-gray-500 mb-1">
+                    <span>{achievement.year}</span>
+                  </div>
                   <p className="text-sm text-gray-600 mb-2">{achievement.event}</p>
                   <p className="text-sm font-medium text-blue-600">{achievement.project}</p>
                 </div>
@@ -197,6 +207,7 @@ export default function Achievements() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedAchievement(selectedAchievement === index ? null : index)}
+                  aria-expanded={selectedAchievement === index}
                   className="relative z-10 w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-700 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center"
                 >
                   {selectedAchievement === index ? "Show Less" : "View Details"}
@@ -269,6 +280,16 @@ export default function Achievements() {
                 </motion.div>
                 <h4 className="text-xl font-bold text-gray-800 mb-2 relative z-10">{cert.name}</h4>
                 <p className="text-gray-600 relative z-10">{cert.issuer}</p>
+                {cert.link && (
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-3 px-4 py-2 bg-gradient-to-r from-orange-400 to-yellow-400 text-white rounded-full font-semibold shadow hover:shadow-lg transition"
+                  >
+                    View Certificate
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
