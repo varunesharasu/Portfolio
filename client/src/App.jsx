@@ -8,7 +8,7 @@ import Intro from "./pages/Intro"
 import Skills from "./pages/Skills"
 import Projects from "./pages/Projects"
 import Education from "./pages/Education"
-import Achievements from "./pages/Achievements"
+// import Achievements from "./pages/Achievements"
 import Contact from "./pages/Contact"
 import LoadingScreen from "./components/loading-screen"
 import ParticleBackground from "./components/particle-background"
@@ -94,7 +94,7 @@ function App() {
                 <Education />
               </div>
               <div ref={achievementsRef}>
-                <Achievements />
+                {/* <Achievements /> */}
               </div>
               <div ref={contactRef}>
                 <Contact />
