@@ -5,6 +5,7 @@ import { useState } from "react"
 
 export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null)
+  const [visibleCount, setVisibleCount] = useState(3)
 
   const projects = [
     {
@@ -42,6 +43,42 @@ export default function Projects() {
       status: "Live",
       category: "Machine Learning",
       year: "2024",
+    },
+    {
+      title: "Portfolio Website",
+      description:
+        "A personal portfolio website to showcase my skills, projects, and experience.",
+      technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
+      image: "/portfolio.png?height=300&width=400",
+      link: "#",
+      github: "https://github.com/varunesharasu/Portfolio",
+      status: "Live",
+      category: "Frontend",
+      year: "2024",
+    },
+    {
+      title: "Task Manager",
+      description:
+        "A simple and efficient task management app for organizing daily activities.",
+      technologies: ["React.js", "Node.js", "MongoDB"],
+      image: "/taskmanager.png?height=300&width=400",
+      link: "#",
+      github: "https://github.com/varunesharasu/TaskManager",
+      status: "Live",
+      category: "Full Stack",
+      year: "2023",
+    },
+    {
+      title: "Weather App",
+      description:
+        "A weather forecasting app providing real-time weather updates and forecasts.",
+      technologies: ["React.js", "API", "Bootstrap"],
+      image: "/weather.png?height=300&width=400",
+      link: "#",
+      github: "https://github.com/varunesharasu/WeatherApp",
+      status: "Live",
+      category: "Frontend",
+      year: "2023",
     },
   ]
 
@@ -82,7 +119,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.slice(0, visibleCount).map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
@@ -230,24 +267,35 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
-
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-center mt-16"
+          className="text-center mt-16 flex flex-col items-center gap-4"
         >
-          <motion.a
-            href="https://github.com/varunesharasu"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            View All Projects on GitHub 📂
-          </motion.a>
+          <div className="flex flex-row justify-center gap-4">
+            <motion.a
+              href="https://github.com/varunesharasu"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              View All Projects on GitHub 📂
+            </motion.a>
+            {visibleCount < projects.length && (
+              <motion.button
+                onClick={() => setVisibleCount(visibleCount + 3)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                View More Projects
+              </motion.button>
+            )}
+          </div>
         </motion.div>
       </div>
     </section>
