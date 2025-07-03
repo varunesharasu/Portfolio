@@ -288,21 +288,33 @@ export default function Projects() {
             {visibleCount < projects.length && (
               <motion.button
                 onClick={() => setVisibleCount(visibleCount + 3)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.08, rotate: 2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg border-4 border-transparent hover:border-white transition-all duration-300 animate-pulse"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6)",
+                }}
               >
-                View More Projects
+                <span className="text-2xl">✨</span>
+                <span>View More Projects</span>
+                <span className="text-2xl">➕</span>
               </motion.button>
             )}
             {visibleCount >= projects.length && projects.length > 3 && (
               <motion.button
                 onClick={() => setVisibleCount(3)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block bg-gradient-to-r from-gray-400 to-gray-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.08, rotate: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-400 via-gray-500 to-gray-700 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg border-4 border-transparent hover:border-white transition-all duration-300 animate-bounce"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #9ca3af, #6b7280, #374151)",
+                }}
               >
-                View Less
+                <span className="text-2xl">🔽</span>
+                <span>View Less</span>
+                <span className="text-2xl">🌙</span>
               </motion.button>
             )}
           </div>
