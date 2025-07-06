@@ -32,7 +32,7 @@ export default function Education() {
         "Operating Systems",
       ],
       projects: 3,
-      certifications: 1,
+      certifications: 2,
     },
     {
       degree: "Higher Secondary Certificate (HSC)",
