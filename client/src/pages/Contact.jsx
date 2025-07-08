@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 
-export default function Contact() {
+export default function Contact({ showNotification }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,6 +19,13 @@ export default function Contact() {
     await new Promise((resolve) => setTimeout(resolve, 2000))
     setIsSubmitting(false)
     setFormData({ name: "", email: "", subject: "", message: "" })
+
+    // Show success notification after 3 more seconds (total 5 seconds from button click)
+    setTimeout(() => {
+      if (showNotification) {
+        showNotification("Message sent successfully! The author will respond as soon as possible.")
+      }
+    }, 3000)
   }
 
   const handleChange = (e) => {
