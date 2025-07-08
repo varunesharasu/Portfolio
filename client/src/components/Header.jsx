@@ -44,7 +44,7 @@ export default function Header({ activeSection, setActiveSection }) {
             />
             <div className="relative bg-slate-800/90 backdrop-blur-sm px-6 py-3 rounded-lg border border-cyan-500/30">
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                VARUNESH.DEV
+                VARUNESH T
               </span>
             </div>
           </motion.div>

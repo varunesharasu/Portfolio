@@ -55,7 +55,7 @@ export default function Footer() {
             />
             <div className="relative bg-slate-800/90 backdrop-blur-sm px-8 py-4 rounded-2xl border border-cyan-500/30">
               <h3 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                VARUNESH.DEV
+                VARUNESH T
               </h3>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400">
-              © {currentYear} Varunesh T. Crafted with{" "}
+              © {currentYear} VARUNESH T. Crafted with{" "}
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}

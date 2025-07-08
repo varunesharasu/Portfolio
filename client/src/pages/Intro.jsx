@@ -180,7 +180,7 @@ export default function Intro() {
                   <div className="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
                     <img
                       src="/me.jpg?height=400&width=400"
-                      alt="Varunesh T"
+                      alt="VARUNESH T"
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
