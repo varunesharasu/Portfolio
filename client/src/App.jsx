@@ -18,6 +18,7 @@
 //   const [isLoading, setIsLoading] = useState(true)
 //   const [scrollY, setScrollY] = useState(0)
 //   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+//   const [notification, setNotification] = useState(null)
 
 //   const introRef = useRef(null)
 //   const skillsRef = useRef(null)
@@ -59,6 +60,11 @@
 //       behavior: "smooth",
 //       block: "start",
 //     })
+//   }
+
+//   const showNotification = (message, type = "success") => {
+//     setNotification({ message, type })
+//     setTimeout(() => setNotification(null), 5000)
 //   }
 
 //   if (isLoading) {
@@ -115,7 +121,7 @@
 //                 <Achievements />
 //               </div>
 //               <div ref={contactRef}>
-//                 <Contact />
+//                 <Contact showNotification={showNotification} />
 //               </div>
 //             </motion.div>
 //           </AnimatePresence>
@@ -147,6 +153,33 @@
 //           <span className="text-xl">↑</span>
 //         </motion.button>
 //       </motion.div>
+
+//       {/* Success Notification */}
+//       {notification && (
+//         <motion.div
+//           initial={{ opacity: 0, y: 50, scale: 0.9 }}
+//           animate={{ opacity: 1, y: 0, scale: 1 }}
+//           exit={{ opacity: 0, y: 50, scale: 0.9 }}
+//           className="fixed bottom-8 left-8 z-50 max-w-sm"
+//         >
+//           <div
+//             className={`p-4 rounded-2xl backdrop-blur-sm border shadow-2xl ${
+//               notification.type === "success"
+//                 ? "bg-green-500/90 border-green-400/50 text-white"
+//                 : "bg-red-500/90 border-red-400/50 text-white"
+//             }`}
+//           >
+//             <div className="flex items-center space-x-3">
+//               <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.5 }} className="text-2xl">
+//                 {notification.type === "success" ? "✅" : "❌"}
+//               </motion.div>
+//               <div>
+//                 <p className="font-semibold text-sm">{notification.message}</p>
+//               </div>
+//             </div>
+//           </div>
+//         </motion.div>
+//       )}
 //     </div>
 //   )
 // }
@@ -159,13 +192,11 @@
 
 
 
-
-
-
 "use client"
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { ThemeProvider } from "./contexts/ThemeContext"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Intro from "./pages/Intro"
@@ -176,13 +207,17 @@ import Achievements from "./pages/achievements"
 import Contact from "./pages/Contact"
 import LoadingScreen from "./components/loading-screen"
 import BackgroundEffects from "./components/background-effects"
+import MusicPlayer from "./components/MusicPlayer"
+import { useTheme } from "./contexts/ThemeContext"
 
-function App() {
+function AppContent() {
   const [activeSection, setActiveSection] = useState("intro")
   const [isLoading, setIsLoading] = useState(true)
   const [scrollY, setScrollY] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [notification, setNotification] = useState(null)
+  const { getThemeClasses } = useTheme()
+  const themeClasses = getThemeClasses()
 
   const introRef = useRef(null)
   const skillsRef = useRef(null)
@@ -236,7 +271,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-x-hidden">
+    <div className={`min-h-screen ${themeClasses.bg} relative overflow-x-hidden transition-all duration-500`}>
       <BackgroundEffects mousePosition={mousePosition} />
 
       {/* Cursor follower */}
@@ -302,7 +337,7 @@ function App() {
         }}
       />
 
-      {/* Floating Action Button */}
+      {/* Floating Action Button - Back to original position */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: scrollY > 100 ? 1 : 0, scale: scrollY > 100 ? 1 : 0 }}
@@ -312,7 +347,7 @@ function App() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white shadow-2xl backdrop-blur-sm border border-white/20"
+          className={`w-14 h-14 ${themeClasses.buttonPrimary} rounded-full flex items-center justify-center text-white shadow-2xl backdrop-blur-sm border border-white/20`}
         >
           <span className="text-xl">↑</span>
         </motion.button>
@@ -324,7 +359,7 @@ function App() {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
-          className="fixed bottom-8 left-8 z-50 max-w-sm"
+          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 max-w-sm"
         >
           <div
             className={`p-4 rounded-2xl backdrop-blur-sm border shadow-2xl ${
@@ -344,7 +379,18 @@ function App() {
           </div>
         </motion.div>
       )}
+
+      {/* Music Player */}
+      <MusicPlayer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   )
 }
 
