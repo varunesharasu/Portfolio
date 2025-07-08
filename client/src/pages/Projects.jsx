@@ -5,13 +5,15 @@ import { useState } from "react"
 
 export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null)
-  const [visibleCount, setVisibleCount] = useState(3)
+  const [selectedFilter, setSelectedFilter] = useState("All")
+
+  const filters = ["All", "Full Stack", "Frontend", "Backend"]
 
   const projects = [
     {
       title: "Blog Platform",
       description:
-        "A User-Friendly Blog Services. Facilitates Creation, Management, and Interaction with blog platform.",
+        "A comprehensive blog platform with user authentication, content management, and real-time interactions.",
       technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
       image: "/blog.png?height=300&width=400",
       link: "#",
@@ -19,11 +21,12 @@ export default function Projects() {
       status: "Live",
       category: "Full Stack",
       year: "2024",
+      featured: true,
     },
     {
       title: "RateSync",
       description:
-        "A platform that allows users to rate and review various products and services, providing valuable insights and feedback.",
+        "A modern rating and review platform that provides valuable insights and feedback for products and services.",
       technologies: ["MongoDB", "React.js", "Node.js", "API", "Bootstrap"],
       image: "/ratesync.png?height=300&width=400",
       link: "https://rate-sync-beta.vercel.app/",
@@ -31,23 +34,23 @@ export default function Projects() {
       status: "Live",
       category: "Full Stack",
       year: "2024",
+      featured: true,
     },
     {
       title: "RESORTEASE",
-      description:
-        "To make the process of booking a resort easier and more efficient, with proper admin management.",
+      description: "Streamlined resort booking system with admin management and seamless user experience.",
       technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
       image: "/resort.png?height=300&width=400",
       link: "https://resort-zeta.vercel.app/",
       github: "https://github.com/varunesharasu/ResortEase",
       status: "Live",
-      category: "Machine Learning",
+      category: "Full Stack",
       year: "2024",
+      featured: false,
     },
     {
       title: "Portfolio Website",
-      description:
-        "A personal portfolio website to showcase my skills, projects, and experience.",
+      description: "A modern, responsive portfolio showcasing skills, projects, and professional experience.",
       technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
       image: "/portfolio.png?height=300&width=400",
       link: "https://varunesh-portfolio.vercel.app/",
@@ -55,84 +58,143 @@ export default function Projects() {
       status: "Live",
       category: "Frontend",
       year: "2024",
+      featured: false,
     },
     {
       title: "Recipe Finder",
-      description:
-        "A simple and efficient recipe search app for discovering new dishes.",
+      description: "Discover new dishes with this intuitive recipe search application.",
       technologies: ["API's", "Node.js", "MongoDB"],
       image: "/recipe.png?height=300&width=400",
       link: "#",
       github: "https://github.com/varunesharasu/Recipe_Finder",
       status: "Live",
-      category: "Full Stack",
+      category: "Backend",
       year: "2023",
+      featured: false,
     },
     {
       title: "EMI Calculator",
-      description:
-        "A tool for calculating Equated Monthly Installments (EMI) for loans.",
-      technologies: ["Flutter", "Dart", "swift", "java"],
+      description: "Cross-platform mobile application for calculating loan EMIs with detailed breakdowns.",
+      technologies: ["Flutter", "Dart", "Swift", "Java"],
       image: "/emi.png?height=300&width=400",
       link: "https://github.com/varunesharasu/EMI_Calculator",
       github: "https://github.com/varunesharasu/EMI_Calculator",
       status: "Live",
       category: "Frontend",
       year: "2023",
+      featured: false,
     },
   ]
 
+  const filteredProjects =
+    selectedFilter === "All" ? projects : projects.filter((project) => project.category === selectedFilter)
+
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      <div className="container mx-auto relative z-10">
+    <section className="py-20 px-6 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 rounded-full text-sm font-medium mb-6 shadow-lg backdrop-blur-sm border border-white/50"
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", bounce: 0.5 }}
+            className="inline-block mb-6"
           >
-            🚀 My Projects
-          </motion.span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Featured{" "}
+            <div className="relative">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-600 rounded-2xl blur-lg opacity-30"
+              />
+              <div className="relative bg-slate-800/90 backdrop-blur-sm px-6 py-3 rounded-2xl border border-purple-500/30">
+                <span className="text-purple-400 font-semibold">◇ Featured Work</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <h2 className="text-5xl md:text-7xl font-bold mb-6">
+            <span className="text-white">My</span>
+            <br />
             <motion.span
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
+              transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
+              className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent bg-300%"
               style={{ backgroundSize: "300% 300%" }}
             >
               Projects
             </motion.span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Here are some of my recent projects built with modern technologies and innovative solutions.
+
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            A collection of projects showcasing my skills in modern web development
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {projects.slice(0, visibleCount).map((project, index) => (
+        {/* Filter Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-wrap justify-center gap-4 mb-16"
+        >
+          {filters.map((filter, index) => (
+            <motion.button
+              key={filter}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedFilter(filter)}
+              className={`relative px-6 py-3 rounded-full font-medium transition-all duration-500 ${
+                selectedFilter === filter ? "text-purple-400" : "text-gray-400 hover:text-white"
+              }`}
+            >
+              {selectedFilter === filter && (
+                <motion.div
+                  layoutId="filterBg"
+                  className="absolute inset-0 bg-slate-800/90 backdrop-blur-sm rounded-full border border-purple-500/30"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10">{filter}</span>
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
+              layout
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              whileHover={{ y: -10 }}
               onHoverStart={() => setHoveredProject(index)}
               onHoverEnd={() => setHoveredProject(null)}
-              className="group relative"
+              className={`group relative ${project.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
             >
-              <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white/90 backdrop-blur-lg rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 relative"
-              >
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500">
+                {/* Featured Badge */}
+                {project.featured && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="absolute top-4 left-4 z-20 px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white text-xs font-semibold"
+                  >
+                    Featured
+                  </motion.div>
+                )}
+
                 {/* Project Image */}
                 <div className="relative h-64 overflow-hidden">
                   <motion.img
@@ -142,114 +204,91 @@ export default function Projects() {
                     transition={{ duration: 0.5 }}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
-                  {/* Year Badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700">
-                    {project.year}
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+
+                  {/* Status & Year */}
+                  <div className="absolute top-4 right-4 flex flex-col gap-2">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                        project.status === "Live" ? "bg-green-500/90 text-white" : "bg-yellow-500/90 text-white"
+                      }`}
+                    >
+                      {project.status}
+                    </span>
+                    <span className="px-3 py-1 bg-slate-800/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-300">
+                      {project.year}
+                    </span>
                   </div>
 
-                  {/* Status Badge */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                      project.status === "Live" ? "bg-green-500 text-white" : "bg-yellow-500 text-white"
-                    }`}
-                  >
-                    {project.status}
-                  </motion.div>
-
-                  {/* Category Badge */}
-                  <div className="absolute bottom-4 left-4 px-3 py-1 bg-blue-500/90 backdrop-blur-sm rounded-full text-xs font-semibold text-white">
-                    {project.category}
-                  </div>
-
-                  {/* Hover Overlay */}
+                  {/* Hover Actions */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: hoveredProject === index ? 1 : 0 }}
-                    className="absolute inset-0 bg-gradient-to-br from-blue-500/80 to-purple-500/80 flex items-center justify-center"
+                    className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center gap-4"
                   >
-                    <div className="flex space-x-4">
-                      <motion.a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="bg-white text-gray-800 px-4 py-2 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-100 transition-colors"
-                      >
-                        <span>View Live</span>
-                        <span>🔗</span>
-                      </motion.a>
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="bg-gray-800 text-white px-4 py-2 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-700 transition-colors"
-                      >
-                        <span>GitHub</span>
-                        <span>📚</span>
-                      </motion.a>
-                    </div>
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold flex items-center space-x-2"
+                    >
+                      <span>View Live</span>
+                      <span>→</span>
+                    </motion.a>
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="px-6 py-3 bg-slate-800/90 backdrop-blur-sm rounded-full text-cyan-400 font-semibold border border-cyan-500/30"
+                    >
+                      Code
+                    </motion.a>
                   </motion.div>
                 </div>
 
                 {/* Project Content */}
                 <div className="p-8">
-                  <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors"
-                  >
-                    {project.title}
-                  </motion.h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-400">
+                      {project.category}
+                    </span>
+                  </div>
 
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.1 }}
-                    className="text-gray-600 mb-6 leading-relaxed"
-                  >
-                    {project.description}
-                  </motion.p>
+                  <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    className="flex flex-wrap gap-2 mb-6"
-                  >
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, idx) => (
                       <motion.span
                         key={idx}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium hover:from-blue-200 hover:to-purple-200 transition-all cursor-default"
+                        className="px-3 py-1 bg-slate-700/50 backdrop-blur-sm rounded-full text-sm text-cyan-400 border border-cyan-500/20"
                       >
                         {tech}
                       </motion.span>
                     ))}
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                    className="flex space-x-4"
-                  >
+                  {/* Action Buttons */}
+                  <div className="flex gap-4">
                     <motion.a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+                      className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white font-semibold text-center hover:shadow-lg transition-all duration-300"
                     >
-                      View Project 🚀
+                      View Project
                     </motion.a>
                     <motion.a
                       href={project.github}
@@ -257,67 +296,37 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
+                      className="px-6 py-3 bg-slate-700/50 backdrop-blur-sm rounded-xl text-cyan-400 font-semibold border border-cyan-500/30 hover:bg-slate-600/50 transition-all duration-300"
                     >
-                      📚
+                      Code
                     </motion.a>
-                  </motion.div>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
+
         {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-center mt-16 flex flex-col items-center gap-4"
+          className="text-center mt-20"
         >
-          <div className="flex flex-row justify-center gap-4">
-            <motion.a
-              href="https://github.com/varunesharasu"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              View All Projects on GitHub 📂
-            </motion.a>
-            {visibleCount < projects.length && (
-              <motion.button
-                onClick={() => setVisibleCount(visibleCount + 3)}
-                whileHover={{ scale: 1.08, rotate: 2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg border-4 border-transparent hover:border-white transition-all duration-300 animate-pulse"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6)",
-                }}
-              >
-                <span className="text-2xl">✨</span>
-                <span>View More Projects</span>
-                <span className="text-2xl">➕</span>
-              </motion.button>
-            )}
-            {visibleCount >= projects.length && projects.length > 3 && (
-              <motion.button
-                onClick={() => setVisibleCount(3)}
-                whileHover={{ scale: 1.08, rotate: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-400 via-gray-500 to-gray-700 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg border-4 border-transparent hover:border-white transition-all duration-300 animate-bounce"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(90deg, #9ca3af, #6b7280, #374151)",
-                }}
-              >
-                <span className="text-2xl">🔽</span>
-                <span>View Less</span>
-                <span className="text-2xl">🌙</span>
-              </motion.button>
-            )}
-          </div>
+          <motion.a
+            href="https://github.com/varunesharasu"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-semibold text-lg shadow-2xl"
+          >
+            <span>View All Projects</span>
+            <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
+              →
+            </motion.span>
+          </motion.a>
         </motion.div>
       </div>
     </section>

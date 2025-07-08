@@ -4,20 +4,15 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
 export default function Intro() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [currentRole, setCurrentRole] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
 
-  const roles = ["Full Stack Developer", "MERN Stack Developer", "Problem Solver", "Tech Enthusiast"]
+  const roles = ["Full Stack Developer", "MERN Stack Specialist", "Problem Solver", "Tech Innovator"]
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+  const skills = ["React", "Node.js", "MongoDB", "Express", "JavaScript", "Python"]
 
   useEffect(() => {
+    setIsVisible(true)
     const interval = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length)
     }, 3000)
@@ -25,208 +20,220 @@ export default function Intro() {
   }, [])
 
   return (
-    <section className="h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
-      {/* Enhanced Floating Elements */}
-      <motion.div
-        animate={{
-          x: mousePosition.x * 0.02,
-          y: mousePosition.y * 0.02,
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          scale: { duration: 4, repeat: Number.POSITIVE_INFINITY },
-          rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-        }}
-        className="absolute top-20 left-4 w-20 h-20 bg-gradient-to-r from-blue-300/30 to-purple-300/30 rounded-full blur-xl"
-      />
-      <motion.div
-        animate={{
-          x: mousePosition.x * -0.02,
-          y: mousePosition.y * -0.02,
-          scale: [1, 1.3, 1],
-          rotate: [360, 180, 0],
-        }}
-        transition={{
-          scale: { duration: 5, repeat: Number.POSITIVE_INFINITY },
-          rotate: { duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-        }}
-        className="absolute bottom-20 right-4 w-32 h-32 bg-gradient-to-r from-purple-300/30 to-pink-300/30 rounded-full blur-xl"
-      />
-
-      <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1"
-        >
-          {/* Keep all the text content the same */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight"
-          >
-            Hi, I'm{" "}
-            <motion.span
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
-              style={{ backgroundSize: "300% 300%" }}
-            >
-              VARUNESH T
-            </motion.span>
-          </motion.h1>
-
+    <section className="min-h-screen flex items-center justify-center px-6 pt-24 pb-12 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 h-12"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="space-y-8"
           >
-            <motion.span
-              key={currentRole}
-              initial={{ opacity: 0, y: 20, rotateX: -90 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              exit={{ opacity: 0, y: -20, rotateX: 90 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block"
+            {/* Greeting */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="space-y-4"
             >
-              {roles[currentRole]}
-            </motion.span>
+              <motion.span
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                className="inline-block px-6 py-3 bg-slate-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30 text-cyan-400 font-medium"
+              >
+                ◉ Available for opportunities
+              </motion.span>
+
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
+                <span className="text-white">Hello, I'm</span>
+                <br />
+                <motion.span
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
+                  className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-300%"
+                  style={{ backgroundSize: "300% 300%" }}
+                >
+                  VARUNESH
+                </motion.span>
+              </h1>
+            </motion.div>
+
+            {/* Dynamic Role */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="h-16 flex items-center"
+            >
+              <span className="text-2xl md:text-3xl text-gray-300 mr-4">I'm a</span>
+              <motion.span
+                key={currentRole}
+                initial={{ opacity: 0, y: 20, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                exit={{ opacity: 0, y: -20, rotateX: 90 }}
+                transition={{ duration: 0.5 }}
+                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+              >
+                {roles[currentRole]}
+              </motion.span>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="text-xl text-gray-300 leading-relaxed max-w-2xl"
+            >
+              Passionate about creating innovative digital solutions and building exceptional user experiences. I
+              transform ideas into reality through clean code and modern technologies.
+            </motion.p>
+
+            {/* Skills Tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="flex flex-wrap gap-3"
+            >
+              {skills.map((skill, index) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + index * 0.1 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="px-4 py-2 bg-slate-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30 text-cyan-400 text-sm font-medium"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+            >
+              <motion.a
+                href="https://www.linkedin.com/in/varunesht/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative group px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold text-white overflow-hidden"
+              >
+                <motion.div
+                  animate={{ x: [-100, 100] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                />
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <span>Let's Connect</span>
+                  <span>→</span>
+                </span>
+              </motion.a>
+
+              <motion.a
+                href="/22ITR113_VARUNESH_T.pdf"
+                download="Varunesh_T_Resume.pdf"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-slate-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30 text-cyan-400 font-semibold hover:bg-slate-700/50 transition-all duration-300 flex items-center justify-center space-x-2"
+              >
+                <span>Download CV</span>
+                <span>↓</span>
+              </motion.a>
+            </motion.div>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-gray-600 mb-10 text-base md:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0"
-          >
-            To obtain a challenging position in my dream company in order to expand my experience and skills and work
-            towards the overall growth of the organisation. Passionate about web development and creating innovative
-            solutions.
-          </motion.p>
-
+          {/* Right Content - 3D Profile */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 100 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative flex justify-center lg:justify-end"
           >
-            <motion.a
-              href="https://www.linkedin.com/in/varunesht/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
-                y: -2,
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-base md:text-lg shadow-lg transition-all duration-300 relative overflow-hidden group"
-            >
+            <div className="relative">
+              {/* Main Image Container */}
               <motion.div
-                animate={{ x: [-100, 100] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:via-white/30"
-              />
-              <span className="relative z-10">Let's Connect 🚀</span>
-            </motion.a>
-            <motion.a
-              href="/22ITR113_VARUNESH_T.pdf"
-              download="Varunesh_T_Resume.pdf"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.2)",
-                y: -2,
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center transition-all duration-300 backdrop-blur-sm bg-white/60 relative overflow-hidden group"
-            >
-              <span className="relative z-10">Download CV 📄</span>
-            </motion.a>
-          </motion.div>
-        </motion.div>
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                className="relative"
+              >
+                <div className="w-80 h-80 md:w-96 md:h-96 relative">
+                  {/* Rotating Border */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1"
+                  >
+                    <div className="w-full h-full rounded-full bg-slate-900" />
+                  </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              y: { duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-            }}
-            className="relative"
-          >
-            <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-blue-100 to-purple-100 relative">
+                  {/* Profile Image */}
+                  <div className="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+                    <img
+                      src="/me.jpg?height=400&width=400"
+                      alt="Varunesh T"
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating Elements */}
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-r from-blue-300/20 to-purple-300/20 rounded-full"
-              />
-              <img
-                src="/me.jpg?height=400&width=400"
-                alt="Varunesh T"
-                className="w-full h-full object-cover object-center relative z-10"
-              />
+                animate={{
+                  y: [0, -15, 0],
+                  rotate: [0, 10, 0],
+                }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
+                className="absolute -top-4 -right-4 w-16 h-16 bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-cyan-500/30 flex items-center justify-center text-2xl"
+              >
+                ⚛️
+              </motion.div>
+
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, -10, 0],
+                }}
+                transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
+                className="absolute -bottom-4 -left-4 w-16 h-16 bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-purple-500/30 flex items-center justify-center text-2xl"
+              >
+                💻
+              </motion.div>
+
+              <motion.div
+                animate={{
+                  y: [0, -12, 0],
+                  rotate: [0, 5, 0],
+                }}
+                transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, delay: 1.5 }}
+                className="absolute top-1/2 -right-8 w-12 h-12 bg-slate-800/90 backdrop-blur-sm rounded-xl border border-pink-500/30 flex items-center justify-center text-lg"
+              >
+                🚀
+              </motion.div>
+
+              <motion.div
+                animate={{
+                  y: [0, -8, 0],
+                  rotate: [0, -5, 0],
+                }}
+                transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, delay: 2 }}
+                className="absolute top-1/4 -left-8 w-12 h-12 bg-slate-800/90 backdrop-blur-sm rounded-xl border border-cyan-500/30 flex items-center justify-center text-lg"
+              >
+                🎨
+              </motion.div>
             </div>
-
-            {/* Enhanced Floating Icons - adjusted for mobile */}
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, 5, 0],
-                scale: [1, 1.05, 1],
-              }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
-              className="absolute -top-2 -right-2 bg-white rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <span className="text-lg md:text-xl">⚛️</span>
-            </motion.div>
-            <motion.div
-              animate={{
-                y: [0, -8, 0],
-                rotate: [0, -5, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
-              className="absolute -bottom-2 -left-2 bg-white rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <span className="text-lg md:text-xl">💻</span>
-            </motion.div>
-            <motion.div
-              animate={{
-                y: [0, -8, 0],
-                rotate: [0, 3, 0],
-                scale: [1, 1.08, 1],
-              }}
-              transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, delay: 1.5 }}
-              className="absolute top-1/2 -right-3 md:-right-4 bg-white rounded-full p-1.5 md:p-2 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <span className="text-sm md:text-lg">🚀</span>
-            </motion.div>
-            <motion.div
-              animate={{
-                y: [0, -6, 0],
-                rotate: [0, -3, 0],
-                scale: [1, 1.05, 1],
-              }}
-              transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, delay: 2 }}
-              className="absolute top-1/4 -left-3 md:-left-4 bg-white rounded-full p-1.5 md:p-2 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <span className="text-sm md:text-lg">🎨</span>
-            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

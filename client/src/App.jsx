@@ -8,15 +8,16 @@ import Intro from "./pages/Intro"
 import Skills from "./pages/Skills"
 import Projects from "./pages/Projects"
 import Education from "./pages/Education"
-// import Achievements from "./pages/Achievements"
+import Achievements from "./pages/Achievements"
 import Contact from "./pages/Contact"
 import LoadingScreen from "./components/loading-screen"
-import ParticleBackground from "./components/particle-background"
+import BackgroundEffects from "./components/background-effects"
 
 function App() {
   const [activeSection, setActiveSection] = useState("intro")
   const [isLoading, setIsLoading] = useState(true)
   const [scrollY, setScrollY] = useState(0)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   const introRef = useRef(null)
   const skillsRef = useRef(null)
@@ -35,14 +36,21 @@ function App() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000)
+    const timer = setTimeout(() => setIsLoading(false), 3000)
     return () => clearTimeout(timer)
   }, [])
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
+    const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY })
+
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("mousemove", handleMouseMove)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
   }, [])
 
   const handleSectionChange = (section) => {
@@ -58,30 +66,40 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-x-hidden">
-      <ParticleBackground />
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-x-hidden">
+      <BackgroundEffects mousePosition={mousePosition} />
+
+      {/* Cursor follower */}
+      <motion.div
+        className="fixed w-6 h-6 bg-cyan-400 rounded-full pointer-events-none z-50 mix-blend-difference"
+        animate={{
+          x: mousePosition.x - 12,
+          y: mousePosition.y - 12,
+        }}
+        transition={{
+          type: "spring",
+          damping: 30,
+          stiffness: 200,
+        }}
+      />
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 1 }}
         className="relative z-10"
       >
         <Header activeSection={activeSection} setActiveSection={handleSectionChange} />
 
-        <main className="flex-grow">
+        <main className="relative">
           <AnimatePresence mode="wait">
             <motion.div
               key="content"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, staggerChildren: 0.1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, staggerChildren: 0.2 }}
             >
-              <div ref={introRef} className="relative">
-                {/* Place Lanyard effect here, above Intro, with transparent background */}
-                {/* <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
-                  <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} transparent={true} />
-                </div> */}
+              <div ref={introRef}>
                 <Intro />
               </div>
               <div ref={skillsRef}>
@@ -94,7 +112,7 @@ function App() {
                 <Education />
               </div>
               <div ref={achievementsRef}>
-                {/* <Achievements /> */}
+                <Achievements />
               </div>
               <div ref={contactRef}>
                 <Contact />
@@ -106,37 +124,29 @@ function App() {
         <Footer />
       </motion.div>
 
-      {/* Enhanced Scroll Progress Bar */}
+      {/* Scroll Progress */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 z-50 origin-left shadow-lg"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 z-50 origin-left"
         style={{
           scaleX: scrollY / (document.documentElement.scrollHeight - window.innerHeight),
         }}
       />
 
-      {/* Floating scroll indicator */}
+      {/* Floating Action Button */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: scrollY > 100 ? 1 : 0 }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: scrollY > 100 ? 1 : 0, scale: scrollY > 100 ? 1 : 0 }}
         className="fixed bottom-8 right-8 z-40"
       >
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white shadow-2xl backdrop-blur-sm border border-white/20"
         >
           <span className="text-xl">↑</span>
         </motion.button>
       </motion.div>
-
-      {/* 
-        IMPORTANT: 
-        The error "Could not load /src/assets/lanyard/card.glb: Unexpected token '/', '// This is'... is not valid JSON"
-        means you are still using the placeholder card.glb file.
-        Download the actual card.glb and lanyard.png from the original repo and place them in src/assets/lanyard/.
-        The animation will not work until you do this.
-      */}
     </div>
   )
 }
