@@ -109,6 +109,12 @@ export default function Achievements() {
       issuer: "Amazon Web Services",
       color: "from-orange-400 to-yellow-500",
     },
+    {
+      name: "MongoDB Associate Developer",
+      icon: "🍃",
+      issuer: "MongoDB University",
+      color: "from-green-400 to-emerald-500",
+    },
   ]
 
   return (
@@ -312,7 +318,7 @@ export default function Achievements() {
           {[
             { number: "6+", label: "Achievements", icon: "🏆", color: "from-yellow-400 to-orange-500" },
             { number: "2", label: "First Prizes", icon: "🥇", color: "from-green-400 to-emerald-500" },
-            { number: "1", label: "AWS Certification", icon: "☁️", color: "from-blue-400 to-cyan-500" },
+            { number: "2", label: "Certifications", icon: "☁️", color: "from-blue-400 to-cyan-500" },
             { number: "4+", label: "Competitions", icon: "🎯", color: "from-purple-400 to-pink-500" },
           ].map((stat, index) => (
             <motion.div
