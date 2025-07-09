@@ -2,9 +2,13 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { useTheme } from "../contexts/ThemeContext"
 
 export default function Achievements() {
   const [selectedAchievement, setSelectedAchievement] = useState(null)
+  const [selectedCertification, setSelectedCertification] = useState(null)
+  const { getThemeClasses } = useTheme()
+  const themeClasses = getThemeClasses()
 
   const achievements = [
     {
@@ -108,12 +112,50 @@ export default function Achievements() {
       icon: "☁️",
       issuer: "Amazon Web Services",
       color: "from-orange-400 to-yellow-500",
+      date: "2024",
+      credentialId: "AWS-CCP-2024-001",
+      description: "Foundational certification demonstrating cloud computing knowledge and AWS services understanding.",
+      skills: [
+        "AWS Core Services",
+        "Cloud Architecture Basics",
+        "Security & Compliance",
+        "Billing & Pricing",
+        "Support Plans",
+      ],
+      details: [
+        "Comprehensive understanding of AWS Cloud concepts",
+        "Knowledge of AWS services and their use cases",
+        "Understanding of AWS security and compliance",
+        "Familiarity with AWS pricing and support models",
+        "Foundation for advanced AWS certifications",
+      ],
+      validUntil: "2027",
+      verificationUrl: "#",
     },
     {
       name: "MongoDB Associate Developer",
       icon: "🍃",
       issuer: "MongoDB University",
       color: "from-green-400 to-emerald-500",
+      date: "2024",
+      credentialId: "MDB-DEV-2024-002",
+      description: "Professional certification validating MongoDB database development and administration skills.",
+      skills: [
+        "MongoDB CRUD Operations",
+        "Data Modeling",
+        "Indexing Strategies",
+        "Aggregation Framework",
+        "Database Administration",
+      ],
+      details: [
+        "Proficient in MongoDB database operations",
+        "Advanced querying and data manipulation",
+        "Performance optimization techniques",
+        "Schema design and data modeling",
+        "Integration with modern applications",
+      ],
+      validUntil: "2027",
+      verificationUrl: "#",
     },
   ]
 
@@ -139,14 +181,16 @@ export default function Achievements() {
                 transition={{ duration: 18, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-600 rounded-2xl blur-lg opacity-30"
               />
-              <div className="relative bg-slate-800/90 backdrop-blur-sm px-6 py-3 rounded-2xl border border-yellow-500/30">
+              <div
+                className={`relative ${themeClasses.cardBg} backdrop-blur-sm px-6 py-3 rounded-2xl border border-yellow-500/30`}
+              >
                 <span className="text-yellow-400 font-semibold">◆ Accomplishments</span>
               </div>
             </div>
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="text-white">Awards &</span>
+          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${themeClasses.headingText}`}>
+            <span>Awards &</span>
             <br />
             <motion.span
               animate={{
@@ -160,13 +204,13 @@ export default function Achievements() {
             </motion.span>
           </h2>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
             Awards, competitions, and recognitions that showcase my dedication to excellence
           </p>
         </motion.div>
 
         {/* Achievements Grid */}
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
           {achievements.map((achievement, index) => (
             <motion.div
               key={index}
@@ -176,7 +220,9 @@ export default function Achievements() {
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative"
             >
-              <div className="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/50 hover:border-yellow-500/50 transition-all duration-500 overflow-hidden">
+              <div
+                className={`relative ${themeClasses.achievementCard} backdrop-blur-sm p-8 rounded-3xl border transition-all duration-500 overflow-hidden`}
+              >
                 {/* Glow Effect */}
                 <motion.div
                   animate={{
@@ -198,7 +244,9 @@ export default function Achievements() {
                     </motion.div>
 
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+                      <h3
+                        className={`text-xl font-bold ${themeClasses.headingText} group-hover:text-yellow-400 transition-colors`}
+                      >
                         {achievement.title}
                       </h3>
                       <span
@@ -209,20 +257,22 @@ export default function Achievements() {
                     </div>
 
                     <div className="space-y-1">
-                      <p className="text-sm text-gray-400">{achievement.event}</p>
+                      <p className={`text-sm ${themeClasses.textMuted}`}>{achievement.event}</p>
                       <p className="text-sm font-medium text-cyan-400">{achievement.project}</p>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-300 leading-relaxed mb-6 text-sm">{achievement.description}</p>
+                  <p className={`${themeClasses.textSecondary} leading-relaxed mb-6 text-sm`}>
+                    {achievement.description}
+                  </p>
 
                   {/* Toggle Button */}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedAchievement(selectedAchievement === index ? null : index)}
-                    className="w-full bg-slate-700/50 hover:bg-slate-600/50 text-gray-300 hover:text-white py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center group"
+                    className={`w-full ${themeClasses.buttonSecondary} py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center group`}
                   >
                     <span>{selectedAchievement === index ? "Show Less" : "View Details"}</span>
                     <motion.span
@@ -240,8 +290,8 @@ export default function Achievements() {
                     transition={{ duration: 0.5 }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-6 border-t border-slate-700/50 mt-4">
-                      <h4 className="font-bold text-white mb-3 flex items-center">
+                    <div className={`pt-6 border-t ${themeClasses.border} mt-4`}>
+                      <h4 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
                         <span className="mr-2">✨</span>
                         Key Highlights
                       </h4>
@@ -252,7 +302,7 @@ export default function Achievements() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="text-gray-300 text-sm flex items-start"
+                            className={`${themeClasses.textSecondary} text-sm flex items-start`}
                           >
                             <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                             <span>{detail}</span>
@@ -267,44 +317,167 @@ export default function Achievements() {
           ))}
         </div>
 
-        {/* Certifications Section */}
+        {/* Certifications Section - Fixed Alignment */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h3 className="text-3xl font-bold text-white mb-8">Professional Certifications</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/50 hover:border-orange-500/50 transition-all duration-300 overflow-hidden group"
-              >
-                <motion.div
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.1, 0.2, 0.1],
-                  }}
-                  transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index }}
-                  className={`absolute inset-0 bg-gradient-to-br ${cert.color} rounded-3xl`}
-                />
+          <div className="text-center mb-12">
+            <h3 className={`text-4xl font-bold ${themeClasses.headingText} mb-4`}>Professional Certifications</h3>
+            <p className={`text-lg ${themeClasses.textSecondary} max-w-2xl mx-auto`}>
+              Industry-recognized certifications validating technical expertise and professional skills
+            </p>
+          </div>
 
-                <div className="relative z-10">
-                  <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-4xl mb-4">
-                    {cert.icon}
+          <div className="flex justify-center">
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl w-full">
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.2 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="relative group cursor-pointer"
+                  onClick={() => setSelectedCertification(selectedCertification === index ? null : index)}
+                >
+                  <div
+                    className={`relative ${themeClasses.cardBg} backdrop-blur-sm p-8 rounded-3xl border ${themeClasses.border} hover:border-orange-500/50 transition-all duration-300 overflow-hidden`}
+                  >
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.1, 0.2, 0.1],
+                      }}
+                      transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index }}
+                      className={`absolute inset-0 bg-gradient-to-br ${cert.color} rounded-3xl`}
+                    />
+
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-4">
+                        <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-4xl">
+                          {cert.icon}
+                        </motion.div>
+                        <span
+                          className={`px-3 py-1 bg-gradient-to-r ${cert.color} text-white text-xs rounded-full font-semibold`}
+                        >
+                          {cert.date}
+                        </span>
+                      </div>
+
+                      <h4
+                        className={`text-xl font-bold ${themeClasses.headingText} mb-2 group-hover:text-orange-400 transition-colors`}
+                      >
+                        {cert.name}
+                      </h4>
+                      <p className={`${themeClasses.textMuted} mb-4`}>{cert.issuer}</p>
+                      <p className={`${themeClasses.textSecondary} text-sm leading-relaxed`}>{cert.description}</p>
+
+                      <motion.div className="mt-4 text-center">
+                        <span className={`text-sm ${themeClasses.accent} font-medium`}>
+                          {selectedCertification === index ? "Click to collapse" : "Click for details"}
+                        </span>
+                      </motion.div>
+                    </div>
+                  </div>
+
+                  {/* Detailed Information Modal/Expansion */}
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={
+                      selectedCertification === index ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }
+                    }
+                    transition={{ duration: 0.5 }}
+                    className="overflow-hidden mt-4"
+                  >
+                    <div
+                      className={`${themeClasses.cardBg} backdrop-blur-sm p-6 rounded-2xl border ${themeClasses.border}`}
+                    >
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {/* Certification Details */}
+                        <div>
+                          <h5 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
+                            <span className="mr-2">📋</span>
+                            Certification Details
+                          </h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className={themeClasses.textMuted}>Credential ID:</span>
+                              <span className={themeClasses.textSecondary}>{cert.credentialId}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className={themeClasses.textMuted}>Valid Until:</span>
+                              <span className={themeClasses.textSecondary}>{cert.validUntil}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className={themeClasses.textMuted}>Issuer:</span>
+                              <span className={themeClasses.textSecondary}>{cert.issuer}</span>
+                            </div>
+                          </div>
+
+                          <motion.a
+                            href={cert.verificationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`inline-block mt-4 px-4 py-2 ${themeClasses.buttonPrimary} text-white rounded-lg text-sm font-medium transition-all duration-300`}
+                          >
+                            Verify Certificate →
+                          </motion.a>
+                        </div>
+
+                        {/* Skills Covered */}
+                        <div>
+                          <h5 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
+                            <span className="mr-2">🎯</span>
+                            Skills Covered
+                          </h5>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {cert.skills.map((skill, idx) => (
+                              <motion.span
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: idx * 0.1 }}
+                                whileHover={{ scale: 1.05 }}
+                                className={`px-3 py-1 bg-gradient-to-r ${cert.color} text-white text-xs rounded-full font-medium`}
+                              >
+                                {skill}
+                              </motion.span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Key Learnings */}
+                      <div className={`mt-6 pt-6 border-t ${themeClasses.border}`}>
+                        <h5 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
+                          <span className="mr-2">💡</span>
+                          Key Learnings & Achievements
+                        </h5>
+                        <ul className="space-y-2">
+                          {cert.details.map((detail, idx) => (
+                            <motion.li
+                              key={idx}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.1 }}
+                              className={`${themeClasses.textSecondary} text-sm flex items-start`}
+                            >
+                              <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
+                              <span>{detail}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </motion.div>
-                  <h4 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
-                    {cert.name}
-                  </h4>
-                  <p className="text-gray-400">{cert.issuer}</p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -327,7 +500,7 @@ export default function Achievements() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 + 0.9 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="relative bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl text-center border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 group overflow-hidden"
+              className={`relative ${themeClasses.cardBg} backdrop-blur-sm p-6 rounded-2xl text-center border ${themeClasses.border} ${themeClasses.borderHover} transition-all duration-300 group overflow-hidden`}
             >
               <motion.div
                 animate={{
@@ -342,8 +515,8 @@ export default function Achievements() {
                 <motion.div whileHover={{ scale: 1.2, rotate: 10 }} className="text-3xl mb-2">
                   {stat.icon}
                 </motion.div>
-                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+                <div className={`text-3xl font-bold ${themeClasses.headingText} mb-1`}>{stat.number}</div>
+                <div className={`${themeClasses.textMuted} text-sm`}>{stat.label}</div>
               </div>
             </motion.div>
           ))}
