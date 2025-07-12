@@ -13,14 +13,10 @@ export const useTheme = () => {
 }
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark")
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("portfolio-theme")
-    if (savedTheme) {
-      setTheme(savedTheme)
-    }
-  }, [])
+  // Use lazy initializer to read localStorage only once
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("portfolio-theme") || "dark"
+  })
 
   useEffect(() => {
     localStorage.setItem("portfolio-theme", theme)

@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { useTheme } from "../contexts/ThemeContext"
 
 export default function Education() {
   const [selectedEducation, setSelectedEducation] = useState(null)
+  const { theme } = useTheme()
 
   const education = [
     {
@@ -104,22 +106,22 @@ export default function Education() {
             </div>
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="text-white">Education &</span>
+          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${theme === "light" ? "text-gray-900" : "text-white"}`}>
+            <span className={theme === "light" ? "text-gray-900" : "text-white"}>Education &</span>
             <br />
             <motion.span
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
               transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
-              className="bg-gradient-to-r from-green-400 via-cyan-500 to-blue-500 bg-clip-text text-transparent bg-300%"
+              className={`bg-gradient-to-r from-green-400 via-cyan-500 to-blue-500 bg-clip-text text-transparent bg-300% ${theme === "light" ? "" : ""}`}
               style={{ backgroundSize: "300% 300%" }}
             >
               Background
             </motion.span>
           </h2>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${theme === "light" ? "text-gray-700" : "text-gray-300"}`}>
             My academic foundation that shaped my passion for technology and innovation
           </p>
         </motion.div>
@@ -159,7 +161,7 @@ export default function Education() {
                 {/* Content Card */}
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-500 group"
+                  className={`relative ${theme === "light" ? "bg-white/90 border-gray-200 hover:border-green-400" : "bg-slate-800/50 border-slate-700/50 hover:border-cyan-500/50"} backdrop-blur-sm p-8 rounded-3xl border transition-all duration-500 group`}
                 >
                   {/* Glow Effect */}
                   <motion.div
@@ -191,16 +193,16 @@ export default function Education() {
                           </motion.span>
                         </div>
 
-                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                        <h3 className={`text-2xl lg:text-3xl font-bold mb-3 group-hover:text-cyan-400 transition-colors ${theme === "light" ? "text-gray-900" : "text-white"}`}>
                           {edu.degree}
                         </h3>
 
                         <div className="space-y-2 mb-4">
-                          <div className="flex items-center text-gray-300">
+                          <div className={`flex items-center ${theme === "light" ? "text-gray-700" : "text-gray-300"}`}>
                             <span className="text-lg mr-3">🏛️</span>
                             <span className="font-semibold">{edu.institution}</span>
                           </div>
-                          <div className="flex items-center text-gray-400 text-sm">
+                          <div className={`flex items-center text-sm ${theme === "light" ? "text-gray-500" : "text-gray-400"}`}>
                             <span className="mr-3">📍</span>
                             <span>{edu.location}</span>
                           </div>
@@ -215,8 +217,8 @@ export default function Education() {
                           {edu.year}
                         </motion.span>
                         <div className="text-right">
-                          <div className="text-sm text-gray-400">Grade</div>
-                          <div className="text-xl font-bold text-white">{edu.gpa}</div>
+                          <div className={`text-sm ${theme === "light" ? "text-gray-500" : "text-gray-400"}`}>Grade</div>
+                          <div className={`text-xl font-bold ${theme === "light" ? "text-gray-900" : "text-white"}`}>{edu.gpa}</div>
                         </div>
                       </div>
                     </motion.div>
@@ -228,17 +230,17 @@ export default function Education() {
                       transition={{ delay: index * 0.2 + 0.5 }}
                       className="grid grid-cols-3 gap-4 mb-6"
                     >
-                      <div className="text-center p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
-                        <div className="text-2xl font-bold text-cyan-400">{edu.projects}</div>
-                        <div className="text-xs text-gray-400">Projects</div>
+                      <div className={`text-center p-4 rounded-xl border ${theme === "light" ? "bg-blue-50 border-blue-200" : "bg-slate-700/30 border-slate-600/30"}`}>
+                        <div className={`text-2xl font-bold ${theme === "light" ? "text-cyan-600" : "text-cyan-400"}`}>{edu.projects}</div>
+                        <div className={`text-xs ${theme === "light" ? "text-gray-600" : "text-gray-400"}`}>Projects</div>
                       </div>
-                      <div className="text-center p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
-                        <div className="text-2xl font-bold text-purple-400">{edu.certifications}</div>
-                        <div className="text-xs text-gray-400">Certificates</div>
+                      <div className={`text-center p-4 rounded-xl border ${theme === "light" ? "bg-purple-50 border-purple-200" : "bg-slate-700/30 border-slate-600/30"}`}>
+                        <div className={`text-2xl font-bold ${theme === "light" ? "text-purple-600" : "text-purple-400"}`}>{edu.certifications}</div>
+                        <div className={`text-xs ${theme === "light" ? "text-gray-600" : "text-gray-400"}`}>Certificates</div>
                       </div>
-                      <div className="text-center p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
-                        <div className="text-2xl font-bold text-green-400">{edu.subjects.length}</div>
-                        <div className="text-xs text-gray-400">Subjects</div>
+                      <div className={`text-center p-4 rounded-xl border ${theme === "light" ? "bg-green-50 border-green-200" : "bg-slate-700/30 border-slate-600/30"}`}>
+                        <div className={`text-2xl font-bold ${theme === "light" ? "text-green-600" : "text-green-400"}`}>{edu.subjects.length}</div>
+                        <div className={`text-xs ${theme === "light" ? "text-gray-600" : "text-gray-400"}`}>Subjects</div>
                       </div>
                     </motion.div>
 
@@ -247,7 +249,7 @@ export default function Education() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.2 + 0.6 }}
-                      className="text-gray-300 leading-relaxed mb-6 border-t border-slate-700/50 pt-6"
+                      className={`leading-relaxed mb-6 border-t pt-6 ${theme === "light" ? "text-gray-700 border-gray-200" : "text-gray-300 border-slate-700/50"}`}
                     >
                       {edu.description}
                     </motion.p>
@@ -259,10 +261,10 @@ export default function Education() {
                       transition={{ duration: 0.5 }}
                       className="overflow-hidden"
                     >
-                      <div className="grid md:grid-cols-2 gap-6 pt-6 border-t border-slate-700/50">
+                      <div className={`grid md:grid-cols-2 gap-6 pt-6 border-t ${theme === "light" ? "border-gray-200" : "border-slate-700/50"}`}>
                         {/* Achievements */}
                         <div>
-                          <h4 className="font-bold text-white mb-4 flex items-center">
+                          <h4 className={`font-bold mb-4 flex items-center ${theme === "light" ? "text-gray-900" : "text-white"}`}>
                             <span className="mr-2">🏆</span>
                             Achievements
                           </h4>
@@ -273,9 +275,9 @@ export default function Education() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="text-gray-300 text-sm flex items-start"
+                                className={`text-sm flex items-start ${theme === "light" ? "text-gray-700" : "text-gray-300"}`}
                               >
-                                <span className="text-green-400 mr-3 mt-1">✓</span>
+                                <span className={`mr-3 mt-1 ${theme === "light" ? "text-green-600" : "text-green-400"}`}>✓</span>
                                 {achievement}
                               </motion.li>
                             ))}
@@ -284,7 +286,7 @@ export default function Education() {
 
                         {/* Key Subjects */}
                         <div>
-                          <h4 className="font-bold text-white mb-4 flex items-center">
+                          <h4 className={`font-bold mb-4 flex items-center ${theme === "light" ? "text-gray-900" : "text-white"}`}>
                             <span className="mr-2">📖</span>
                             Key Subjects
                           </h4>
@@ -296,7 +298,7 @@ export default function Education() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: idx * 0.1 }}
                                 whileHover={{ scale: 1.05 }}
-                                className={`px-3 py-1 bg-gradient-to-r ${edu.color} text-white text-xs rounded-full font-medium`}
+                                className={`px-3 py-1 text-xs rounded-full font-medium ${theme === "light" ? "bg-blue-100 text-blue-800" : `bg-gradient-to-r ${edu.color} text-white`}`}
                               >
                                 {subject}
                               </motion.span>
@@ -311,7 +313,7 @@ export default function Education() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedEducation(selectedEducation === index ? null : index)}
-                      className="mt-6 text-cyan-400 hover:text-white font-medium text-sm flex items-center transition-colors group"
+                      className={`mt-6 font-medium text-sm flex items-center transition-colors group ${theme === "light" ? "text-cyan-600 hover:text-gray-900" : "text-cyan-400 hover:text-white"}`}
                     >
                       <span>{selectedEducation === index ? "Show Less" : "Show More"}</span>
                       <motion.span
