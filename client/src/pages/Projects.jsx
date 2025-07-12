@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { useTheme } from "../contexts/ThemeContext"
 
 export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [selectedFilter, setSelectedFilter] = useState("All")
+  const { theme } = useTheme()
 
   const filters = ["All", "Full Stack", "Frontend", "Backend"]
 
@@ -117,8 +119,8 @@ export default function Projects() {
             </div>
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="text-white">My</span>
+          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${theme === "light" ? "text-gray-900" : "text-white"}`}>
+            <span className={theme === "light" ? "text-gray-900" : "text-white"}>My</span>
             <br />
             <motion.span
               animate={{
@@ -132,7 +134,7 @@ export default function Projects() {
             </motion.span>
           </h2>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${theme === "light" ? "text-gray-700" : "text-gray-300"}`}>
             A collection of projects showcasing my skills in modern web development
           </p>
         </motion.div>
@@ -154,7 +156,9 @@ export default function Projects() {
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedFilter(filter)}
               className={`relative px-6 py-3 rounded-full font-medium transition-all duration-500 ${
-                selectedFilter === filter ? "text-purple-400" : "text-gray-400 hover:text-white"
+                selectedFilter === filter
+                  ? (theme === "light" ? "text-purple-600" : "text-purple-400")
+                  : (theme === "light" ? "text-gray-500 hover:text-gray-900" : "text-gray-400 hover:text-white")
               }`}
             >
               {selectedFilter === filter && (
@@ -183,13 +187,23 @@ export default function Projects() {
               onHoverEnd={() => setHoveredProject(null)}
               className={`group relative ${project.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
             >
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500">
+              <div className={`relative rounded-3xl overflow-hidden border transition-all duration-500
+                ${theme === "light"
+                  ? "bg-white/90 border-gray-200 hover:border-purple-400"
+                  : "bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-purple-500/50"
+                }`
+              }>
                 {/* Featured Badge */}
                 {project.featured && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="absolute top-4 left-4 z-20 px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white text-xs font-semibold"
+                    className={`absolute top-4 left-4 z-20 px-3 py-1 rounded-full text-xs font-semibold
+                      ${theme === "light"
+                        ? "bg-gradient-to-r from-purple-400 to-pink-400 text-white"
+                        : "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                      }`
+                    }
                   >
                     Featured
                   </motion.div>
@@ -255,15 +269,20 @@ export default function Projects() {
                 {/* Project Content */}
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                    <h3 className={`text-2xl font-bold group-hover:text-purple-400 transition-colors
+                      ${theme === "light" ? "text-gray-900" : "text-white"}`}>
                       {project.title}
                     </h3>
-                    <span className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-400">
+                    <span className={`px-3 py-1 rounded-full text-xs
+                      ${theme === "light" ? "bg-gray-200 text-gray-700" : "bg-slate-700/50 text-gray-400"}`}>
                       {project.category}
                     </span>
                   </div>
 
-                  <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+                  <p className={`mb-6 leading-relaxed
+                    ${theme === "light" ? "text-gray-700" : "text-gray-300"}`}>
+                    {project.description}
+                  </p>
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -271,7 +290,12 @@ export default function Projects() {
                       <motion.span
                         key={idx}
                         whileHover={{ scale: 1.05 }}
-                        className="px-3 py-1 bg-slate-700/50 backdrop-blur-sm rounded-full text-sm text-cyan-400 border border-cyan-500/20"
+                        className={`px-3 py-1 rounded-full text-sm border
+                          ${theme === "light"
+                            ? "bg-blue-100 text-blue-800 border-blue-200"
+                            : "bg-slate-700/50 backdrop-blur-sm text-cyan-400 border-cyan-500/20"
+                          }`
+                        }
                       >
                         {tech}
                       </motion.span>
@@ -286,7 +310,12 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white font-semibold text-center hover:shadow-lg transition-all duration-300"
+                      className={`flex-1 px-6 py-3 rounded-xl font-semibold text-center hover:shadow-lg transition-all duration-300
+                        ${theme === "light"
+                          ? "bg-gradient-to-r from-purple-400 to-pink-400 text-white"
+                          : "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                        }`
+                      }
                     >
                       View Project
                     </motion.a>
@@ -296,7 +325,12 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-6 py-3 bg-slate-700/50 backdrop-blur-sm rounded-xl text-cyan-400 font-semibold border border-cyan-500/30 hover:bg-slate-600/50 transition-all duration-300"
+                      className={`px-6 py-3 rounded-xl font-semibold border transition-all duration-300
+                        ${theme === "light"
+                          ? "bg-gray-200 text-blue-800 border-blue-300 hover:bg-gray-300"
+                          : "bg-slate-700/50 backdrop-blur-sm text-cyan-400 border-cyan-500/30 hover:bg-slate-600/50"
+                        }`
+                      }
                     >
                       Code
                     </motion.a>
@@ -320,7 +354,12 @@ export default function Projects() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-semibold text-lg shadow-2xl"
+            className={`inline-flex items-center space-x-3 px-8 py-4 rounded-full font-semibold text-lg shadow-2xl
+              ${theme === "light"
+                ? "bg-gradient-to-r from-cyan-400 to-purple-400 text-white"
+                : "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
+              }`
+            }
           >
             <span>View All Projects</span>
             <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
