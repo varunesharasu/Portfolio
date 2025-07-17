@@ -147,7 +147,7 @@ export default function Intro() {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-slate-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30 text-cyan-400 font-semibold hover:bg-slate-700/50 transition-all duration-300 flex items-center justify-center space-x-2"
                 >
-                  <span>Download my CV</span>
+                  <span>Download CV</span>
                   <span>↓</span>
                 </motion.a>
               </motion.div>
