@@ -239,7 +239,6 @@ export default function Intro() {
           </div>
         </div>
 
-        {/* Mobile-specific layout adjustment */}
         <style jsx>{`
           @media (max-width: 1023px) {
             .order-1 {
