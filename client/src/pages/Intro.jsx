@@ -190,7 +190,6 @@ export default function Intro() {
                   </div>
                 </motion.div>
 
-                {/* Floating Elements */}
                 <motion.div
                   animate={{
                     y: [0, -15, 0],
