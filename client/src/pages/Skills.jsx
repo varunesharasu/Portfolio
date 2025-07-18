@@ -199,10 +199,8 @@ export default function Skills() {
                   {skill.icon}
                 </motion.div>
 
-                {/* Name */}
                 <h3 className="text-lg font-bold text-white mb-2 relative z-10">{skill.name}</h3>
 
-                {/* Level */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={hoveredSkill === index ? { opacity: 1 } : { opacity: 0 }}
@@ -211,7 +209,6 @@ export default function Skills() {
                   {skill.level}%
                 </motion.div>
 
-                {/* Category Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={hoveredSkill === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
@@ -224,7 +221,6 @@ export default function Skills() {
           ))}
         </motion.div>
 
-        {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
