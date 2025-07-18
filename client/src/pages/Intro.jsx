@@ -31,7 +31,6 @@ export default function Intro() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="space-y-8"
             >
-              {/* Greeting */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -62,7 +61,6 @@ export default function Intro() {
                 </h1>
               </motion.div>
 
-              {/* Dynamic Role */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -82,7 +80,6 @@ export default function Intro() {
                 </motion.span>
               </motion.div>
 
-              {/* Description */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -93,7 +90,6 @@ export default function Intro() {
                 transform ideas into reality through clean code and modern technologies.
               </motion.p>
 
-              {/* Skills Tags */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -114,7 +110,6 @@ export default function Intro() {
                 ))}
               </motion.div>
 
-              {/* CTA Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,7 +149,6 @@ export default function Intro() {
             </motion.div>
           </div>
 
-          {/* Mobile: Image Second (Top), Desktop: Image Second (Right) */}
           <div className="order-2 lg:order-2">
             <motion.div
               initial={{ opacity: 0, x: 100 }}
@@ -163,14 +157,12 @@ export default function Intro() {
               className="relative flex justify-center lg:justify-end"
             >
               <div className="relative">
-                {/* Main Image Container */}
                 <motion.div
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
                   className="relative"
                 >
                   <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 relative">
-                    {/* Rotating Border */}
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
@@ -179,7 +171,6 @@ export default function Intro() {
                       <div className="w-full h-full rounded-full bg-slate-900" />
                     </motion.div>
 
-                    {/* Profile Image */}
                     <div className="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
                       <img
                         src="/me.jpg?height=400&width=400"
