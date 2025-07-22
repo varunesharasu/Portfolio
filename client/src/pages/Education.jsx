@@ -216,7 +216,6 @@ export default function Education() {
                       </div>
                     </motion.div>
 
-                    {/* Stats */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -237,7 +236,6 @@ export default function Education() {
                       </div>
                     </motion.div>
 
-                    {/* Description */}
                     <motion.p
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
