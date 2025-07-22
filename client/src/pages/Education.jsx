@@ -81,7 +81,6 @@ export default function Education() {
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
