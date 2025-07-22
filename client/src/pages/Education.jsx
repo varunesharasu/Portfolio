@@ -252,7 +252,6 @@ export default function Education() {
                       className="overflow-hidden"
                     >
                       <div className={`grid md:grid-cols-2 gap-6 pt-6 border-t ${theme === "light" ? "border-gray-200" : "border-slate-700/50"}`}>
-                        {/* Achievements */}
                         <div>
                           <h4 className={`font-bold mb-4 flex items-center ${theme === "light" ? "text-gray-900" : "text-white"}`}>
                             <span className="mr-2">🏆</span>
