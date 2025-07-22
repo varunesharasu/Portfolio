@@ -245,7 +245,6 @@ export default function Education() {
                       {edu.description}
                     </motion.p>
 
-                    {/* Expandable Details */}
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={selectedEducation === index ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
