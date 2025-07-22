@@ -273,7 +273,6 @@ export default function Education() {
                           </ul>
                         </div>
 
-                        {/* Key Subjects */}
                         <div>
                           <h4 className={`font-bold mb-4 flex items-center ${theme === "light" ? "text-gray-900" : "text-white"}`}>
                             <span className="mr-2">📖</span>
