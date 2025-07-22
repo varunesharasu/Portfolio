@@ -296,7 +296,6 @@ export default function Education() {
                       </div>
                     </motion.div>
 
-                    {/* Toggle Button */}
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
