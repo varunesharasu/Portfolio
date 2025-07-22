@@ -154,12 +154,10 @@ export default function Education() {
                   <span className="text-white text-lg">{edu.icon}</span>
                 </motion.div>
 
-                {/* Content Card */}
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
                   className={`relative ${theme === "light" ? "bg-white/90 border-gray-200 hover:border-green-400" : "bg-slate-800/50 border-slate-700/50 hover:border-cyan-500/50"} backdrop-blur-sm p-8 rounded-3xl border transition-all duration-500 group`}
                 >
-                  {/* Glow Effect */}
                   <motion.div
                     animate={{ opacity: [0, 0.1, 0] }}
                     transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
@@ -167,7 +165,6 @@ export default function Education() {
                   />
 
                   <div className="relative z-10">
-                    {/* Header */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
