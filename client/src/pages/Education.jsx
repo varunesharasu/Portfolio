@@ -126,7 +126,6 @@ export default function Education() {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-purple-500 to-green-400 rounded-full hidden md:block">
             <motion.div
               animate={{ y: [0, 20, 0] }}
@@ -144,7 +143,6 @@ export default function Education() {
                 transition={{ delay: index * 0.2, duration: 0.8 }}
                 className="relative pl-0 md:pl-20 group"
               >
-                {/* Timeline Dot */}
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
