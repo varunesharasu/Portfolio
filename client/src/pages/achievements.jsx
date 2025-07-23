@@ -481,7 +481,6 @@ export default function Achievements() {
           </div>
         </motion.div>
 
-        {/* Summary Stats */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
