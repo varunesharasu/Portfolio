@@ -396,7 +396,6 @@ export default function Achievements() {
                       className={`${themeClasses.cardBg} backdrop-blur-sm p-6 rounded-2xl border ${themeClasses.border}`}
                     >
                       <div className="grid md:grid-cols-2 gap-6">
-                        {/* Certification Details */}
                         <div>
                           <h5 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
                             <span className="mr-2">📋</span>
