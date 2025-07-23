@@ -429,7 +429,6 @@ export default function Achievements() {
                           </motion.a>
                         </div>
 
-                        {/* Skills Covered */}
                         <div>
                           <h5 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
                             <span className="mr-2">🎯</span>
