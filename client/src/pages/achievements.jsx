@@ -452,7 +452,6 @@ export default function Achievements() {
                         </div>
                       </div>
 
-                      {/* Key Learnings */}
                       <div className={`mt-6 pt-6 border-t ${themeClasses.border}`}>
                         <h5 className={`font-bold ${themeClasses.headingText} mb-3 flex items-center`}>
                           <span className="mr-2">💡</span>
