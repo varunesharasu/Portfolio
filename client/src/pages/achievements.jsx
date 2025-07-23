@@ -283,7 +283,6 @@ export default function Achievements() {
                     </motion.span>
                   </motion.button>
 
-                  {/* Expandable Details */}
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={selectedAchievement === index ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
