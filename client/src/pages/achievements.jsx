@@ -383,7 +383,6 @@ export default function Achievements() {
                     </div>
                   </div>
 
-                  {/* Detailed Information Modal/Expansion */}
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={
