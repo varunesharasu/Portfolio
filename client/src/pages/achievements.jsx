@@ -317,7 +317,6 @@ export default function Achievements() {
           ))}
         </div>
 
-        {/* Certifications Section - Fixed Alignment */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
