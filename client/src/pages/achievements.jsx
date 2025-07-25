@@ -262,12 +262,10 @@ export default function Achievements() {
                     </div>
                   </div>
 
-                  {/* Description */}
                   <p className={`${themeClasses.textSecondary} leading-relaxed mb-6 text-sm`}>
                     {achievement.description}
                   </p>
 
-                  {/* Toggle Button */}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
