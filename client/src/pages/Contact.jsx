@@ -84,7 +84,6 @@ export default function Contact({ showNotification }) {
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +129,6 @@ export default function Contact({ showNotification }) {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
