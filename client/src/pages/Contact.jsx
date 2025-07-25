@@ -164,7 +164,6 @@ export default function Contact({ showNotification }) {
               ))}
             </div>
 
-            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -194,13 +193,11 @@ export default function Contact({ showNotification }) {
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <form
               onSubmit={handleSubmit}
               className="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/50 overflow-hidden"
             >
-              {/* Form Glow Effect */}
               <motion.div
                 animate={{ opacity: [0, 0.1, 0] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
