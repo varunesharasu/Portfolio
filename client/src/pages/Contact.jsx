@@ -19,7 +19,6 @@ export default function Contact({ showNotification }) {
     setIsSubmitting(false)
     setFormData({ name: "", email: "", subject: "", message: "" })
 
-    // Show success notification after 3 more seconds (total 5 seconds from button click)
     setTimeout(() => {
       if (showNotification) {
         showNotification("Message sent successfully! The author will respond as soon as possible.")
