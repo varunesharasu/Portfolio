@@ -15,7 +15,6 @@ export default function Contact({ showNotification }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 2000))
     setIsSubmitting(false)
     setFormData({ name: "", email: "", subject: "", message: "" })
