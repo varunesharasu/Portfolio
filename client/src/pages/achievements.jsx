@@ -209,7 +209,6 @@ export default function Achievements() {
           </p>
         </motion.div>
 
-        {/* Achievements Grid */}
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
           {achievements.map((achievement, index) => (
             <motion.div
@@ -223,7 +222,6 @@ export default function Achievements() {
               <div
                 className={`relative ${themeClasses.achievementCard} backdrop-blur-sm p-8 rounded-3xl border transition-all duration-500 overflow-hidden`}
               >
-                {/* Glow Effect */}
                 <motion.div
                   animate={{
                     opacity: [0, 0.1, 0],
@@ -234,7 +232,6 @@ export default function Achievements() {
                 />
 
                 <div className="relative z-10">
-                  {/* Header */}
                   <div className="mb-6">
                     <motion.div
                       whileHover={{ scale: 1.2, rotate: 10 }}
