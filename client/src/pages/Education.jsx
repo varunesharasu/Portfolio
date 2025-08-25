@@ -320,3 +320,5 @@ export default function Education() {
     </section>
   )
 }
+
+// import { motion } from "framer-motion";
