@@ -372,4 +372,3 @@ export default function Projects() {
   )
 }
 
-// import { motion } from "framer-motion";
