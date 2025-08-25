@@ -243,3 +243,5 @@ export default function Intro() {
     </section>
   )
 }
+
+// import { motion } from "framer-motion";
