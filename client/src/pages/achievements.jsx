@@ -513,3 +513,5 @@ export default function Achievements() {
     </section>
   )
 }
+
+export default Achievements;
