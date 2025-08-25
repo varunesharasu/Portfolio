@@ -371,3 +371,5 @@ export default function Projects() {
     </section>
   )
 }
+
+// import { motion } from "framer-motion";
