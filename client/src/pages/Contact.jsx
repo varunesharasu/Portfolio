@@ -335,4 +335,3 @@ export default function Contact({ showNotification }) {
   )
 }
 
-// import { motion } from "framer-motion";
