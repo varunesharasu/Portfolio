@@ -514,4 +514,3 @@ export default function Achievements() {
   )
 }
 
-export default Achievements;
