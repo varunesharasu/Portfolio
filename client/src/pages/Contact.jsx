@@ -334,3 +334,5 @@ export default function Contact({ showNotification }) {
     </section>
   )
 }
+
+// import { motion } from "framer-motion";
