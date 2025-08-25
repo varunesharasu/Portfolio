@@ -244,4 +244,3 @@ export default function Intro() {
   )
 }
 
-// import { motion } from "framer-motion";
