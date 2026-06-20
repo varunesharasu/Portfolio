@@ -34,7 +34,3 @@ Then open `http://localhost:3000` in your browser.
 ## Contribution
 
 Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss your ideas.
-
-## Contact
-
-For questions or feedback, contact [your-email@example.com].
