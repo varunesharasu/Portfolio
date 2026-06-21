@@ -20,16 +20,6 @@ This project is designed to present your professional profile, highlight your ex
 - JavaScript/TypeScript
 - [Add backend or deployment tools if applicable]
 
-## Setup
-
-```sh
-git clone <repository-url>
-cd Portfolio
-npm install
-npm start
-```
-
-Then open `http://localhost:3000` in your browser.
 
 ## Contribution
 
