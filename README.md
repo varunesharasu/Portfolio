@@ -20,7 +20,3 @@ This project is designed to present your professional profile, highlight your ex
 - JavaScript/TypeScript
 - [Add backend or deployment tools if applicable]
 
-
-## Contribution
-
-Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss your ideas.
