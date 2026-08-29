@@ -1,0 +1,2 @@
+/* Section-specific overrides stay isolated here. The shared visual system remains unchanged. */
+.hero,.projects-section,.timeline-section,.contact,.terminal-section{scroll-margin-top:80px}
